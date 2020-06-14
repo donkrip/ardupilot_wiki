@@ -8,20 +8,58 @@ MAVExplorer is a log exploration tool. It is based on the same concepts
 as mavgraph, but is interactive, and supports a community contribution
 model for pre-defined graphs.
 
-Installing MAVExplorer
-======================
+Installing MAVExplorer on Linux
+-------------------------------
 
 You will need the latest version of pymavlink and mavproxy installed. On
 Linux do this:
 
 ::
 
-    sudo apt-get install python-matplotlib python-serial python-wxgtk2.8 python-lxml
+    sudo apt-get install python-matplotlib python-serial python-wxgtk3.0 python-lxml
     sudo apt-get install python-scipy python-opencv  python-pip python-pexpect python-tk
     sudo pip install --upgrade pymavlink mavproxy
 
 after running that you should have a new command "MAVExplorer.py" in
 your path.
+
+Installing MAVExplorer on Windows
+---------------------------------
+
+To install MAVExplorer on Windows download the pre-built MAVProxy package here:
+
+https://firmware.ardupilot.org/Tools/MAVProxy/
+
+That package includes both MAVProxy and MAVExplorer. 
+
+Then create a link from 
+
+::
+
+    c:\Program Files (x86)\MAVProxy\MAVExplorer.exe 
+    
+onto your desktop. You can then start MAVExplorer by dragging a log file onto the MAVExplorer shortcut.
+
+Installing MAVExplorer on MacOS
+-------------------------------
+
+To install MAVExplorer on MacOS you will need to have "pip" installed. If you don't have pip, then use:
+::
+
+  sudo easy_install pip
+
+Then install mavproxy (which contains MAVExplorer) like this:
+
+::
+
+ pip install mavproxy --user
+
+Then add $HOME/Library/Python/2.7/bin to your $PATH, like this:
+
+::
+
+ echo 'export PATH=$PATH:$HOME/Library/Python/2.7/bin' >> $HOME/.bash_profile
+
 
 Starting MAVExplorer
 --------------------
@@ -41,6 +79,8 @@ you will end up with two windows, like this:
 The top window is the "console" and has your menus and the status
 messages. The bottom window is your terminal, and has the "MAV>" prompt
 for typing commands.
+
+Note: be careful with spaces in log filenames. Use quotes around the filename if needed.
 
 Using pre-defined graphs
 ------------------------

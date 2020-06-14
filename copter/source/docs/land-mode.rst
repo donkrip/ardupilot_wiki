@@ -9,14 +9,14 @@ features:
 
 -  descends to 10m (or until the sonar senses something below the
    copter) using the regular Altitude Hold controller which will descend
-   at the speed held in the WPNAV_SPEED_DN parameter which can be
+   at the speed held in the :ref:`WPNAV_SPEED_DN<WPNAV_SPEED_DN>` parameter which can be
    modified on the Mission Planner's Config/Tuning > Copter Pids screen.
 
    .. image:: ../images/Land_DescentSpeed1.png
        :target: ../_images/Land_DescentSpeed1.png
 
 -  below 10m the copter should descend at the rate specified in the
-   LAND_SPEED parameter which defaults to 50cm/s.
+   :ref:`LAND_SPEED<LAND_SPEED>` parameter which defaults to 50cm/s.
 
    .. image:: ../images/Land_DescentSpeed2.png
        :target: ../_images/Land_DescentSpeed2.png
@@ -34,7 +34,7 @@ features:
 
 -  If the copter appears to bounce or balloon back up a couple of times
    before settling down and turning the props off, try lowering the
-   LAND_SPEED parameter a bit.
+   :ref:`LAND_SPEED<LAND_SPEED>` parameter a bit.
 -  If the vehicle has GPS lock the landing controller will attempt to
    control it's horizontal position but the pilot can adjust the target
    horizontal position just as in Loiter mode.
@@ -49,7 +49,7 @@ features:
     Auto, AutoLand or RTL if your copters operation becomes erratic when you
     are close to the ground or landing (and also if any auto landing
     procedure results in bouncing or failure to turn off motors properly
-    after landing) you probably have the fight controller situated such that
+    after landing) you probably have the autopilot situated such that
     it's barometer (altimeter) is being affected by the pressure created by
     the copters prop-wash against the ground.
 
@@ -57,7 +57,7 @@ features:
 
 -  This is easily verified by looking at the Altimeter reading in your
    logs and seeing if it spikes or oscillates when near the ground.
--  If this is a problem, move the flight controller out of prop wash
+-  If this is a problem, move the autopilot out of prop wash
    effect or shield it with an appropriately ventilated enclosure.
 -  Success can be verified by flight test and by log results.
 

@@ -1,101 +1,78 @@
 .. _common-3dr-power-module:
 
-================
-3DR Power Module
-================
-
-This page explains how to set up the 3DR Power Module (PM) to measure
-battery voltage and current consumption. The information will also be
-useful for setting up other types of Power Module.
-
-Overview
-========
-
-The Pixhawk and APM 2.x have a dedicated connector for attaching the
-`3DR Power Module <http://store.jdrones.com/APM25_PSU_XT60_p/pwrapm25x1.htm>`__
-(PM). This is useful because it:
-
--  Provides a stable 5.37V and 2.25Amp power supply which reduces the
-   chances of a brown-out
--  Allows monitoring of the battery's voltage and current and triggering
-   a return-to-launch when the voltage becomes low or the total power
-   consumed during the flight approaches the battery's capacity
--  Allows the autopilot firmware to more accurately compensate for the
-   interference on the compass from other components
-
-The PM accepts a maximum input voltage of 18V (up to 4S Lipo battery)
-and maximum current of 90Amps. When used with an APM the full 90Amp
-current sensing range can be used, with the PX4/Pixhawks up to 60Amps
-can be measured.
-
-There is more general information on powering in :ref:`Powering the Pixhawk <common-powering-the-pixhawk>` and :ref:`Powering the APM2 <common-powering-the-apm2>`.
-
-.. warning::
-
-   The Power Module's maximum input voltage is 18V. This is the
-   maximum allowed by the on-board regulator. (4 cell LiPo max).
-
-.. warning::
-
-   The Power Module does not have sufficient power for servos or
-   high current devices such as FPV transmitters.
-
-   -  The power module does provide sufficient power for the Pixhawk/APM,
-      your receiver and a small electronic module such as a PPM encoder or
-      3DR telemetry radio.
-   -  You may "control" servos from signal pins, but the servos must be
-      powered by a separate ESC.
-
-Connecting the PM to a flight controller board
-==============================================
+===================
+Common Power Module
+===================
 
 .. image:: ../../../images/3DR-current-sensor-top.jpg
     :target: ../_images/3DR-current-sensor-top.jpg
+    :width: 450px
 
-The 6-pos cable plugs into the 6-pos connector on both the Power Module
-and Pixhawk/APM.
+Many autopilots can be purchased with an analog power module that provides a stable power supply to the autopilot and also supports measuring the battery voltage and current consumption.
 
-.. figure:: ../../../images/pixhawkpower-port.jpg
-   :target: ../_images/pixhawkpower-port.jpg
+Specifications
+--------------
 
-   Pixhawk Power Port
+Below are typical limits but it may be best to confirm directly with the vendor:
 
-.. figure:: ../../../images/3DR-current-sensor-APM-conn.jpg
-   :target: ../_images/3DR-current-sensor-APM-conn.jpg
+- Maximum input voltage of 18V (4S lipo)
+- Maximum of 90 Amps (but only capable of measuring up to 60 Amps)
+- Provides 5.37V and 2.25Amp power supply to the autopilot
 
-   APM2.x Power Port
+.. warning::
 
-Your battery connects to the Power Module's male connector, and its
-female connector plugs into your ESC or Power Distribution Board.
+   The Power Module provides enough power for the autopilot, receiver, and a few low powered peripherals (lidar, telemetry) but does not have enough power for servos or high current devices like FPV transmitters or the RFD900 radios.  More information on :ref:`powering the Pixhawk can be found here <common-powering-the-pixhawk>`
 
-.. note::
+Connecting to the autopilot
+-----------------------------------
 
-   **APM 2.x Power Module Notes:**
+The 6 pin cable from the power module plugs into the POWER port of the autopilot
 
-   -  You should normally remove the APM's JP1 jumper when using the Power
-      Module so that only your APM board and your receiver are powered from
-      the Power Module's on-board regulator and not from your ESCs.
+.. image:: ../../../images/powermodule-analog-pixhawk.png
+    :target: ../_images/powermodule-analog-pixhawk.png
+    :width: 300px
 
-      -  Removing the jumper allows you to use the APM's servo output rail
-         to distribute power from your ESC's BEC or separate UBEC to any
-         servos or external equipment.
-      -  If you are using servos, plug an ESC BEC or stand alone UBEC power
-         wire and ground wire into two of the power and ground pins on the
-         APM's servo output rail to provide a common power and ground bus
-         for servo power.
+The battery is connected to the power module's male connector.  The ESC or Power Distribution Board should be connected to the power module's female connector.
 
-   -  You can leave the jumper present if you are using ESCs that have no
-      BECs or if all the ESC BECs power wires are cut and you are not
-      powering any servos from the servo out rail.
-   -  You can also individually power each servo from each individual
-      ESC-BEC.
+Configuration
+-------------
 
-      -  Simply run the power and ground from each ESC-BEC individually and
-         directly to each servo (very handy for multicopters).
+Most ground stations provide a battery monitor interface but the parameters can also be set manually:
 
-Setup through Mission Planner
-=============================
+- :ref:`BATT_MONITOR <BATT_MONITOR>` = **3** to measure only voltage or **4** to measure both voltage and current (you will need to reboot the board after changing this)
+- :ref:`BATT_VOLT_PIN <BATT_VOLT_PIN>` = **2**. The autopilot pin connected to the power module's voltage pin
+- :ref:`BATT_VOLT_MULT <BATT_VOLT_MULT>` converts the analog voltage received from the power module's voltage pin to the battery's voltage
+- :ref:`BATT_CURR_PIN <BATT_CURR_PIN>` = **3**. The autopilot pin connected to the power module's current pin
+- :ref:`BATT_AMP_PERVLT <BATT_AMP_PERVLT>` converts the analog voltage received from the power module's current pin to the battery's current
+- :ref:`BATT_AMP_OFFSET <BATT_AMP_OFFSET>` voltage offset received from the power module's current pin when ther is no current being pulled from the battery
 
-:ref:`Power Module Configuration in Mission Planner <common-power-module-configuration-in-mission-planner>`
-explains how to configure a Power Module and get low battery alerts from
-Mission Planner.
+Instructions for setup and calibration using the :ref:`Mission Planner can be found here <common-power-module-configuration-in-mission-planner>`
+A Blog post with instructions for `set-up using QGC can be found here <https://discuss.ardupilot.org/t/power-monitor-setup-on-ardupilot-copter-3-6/35441>`__
+
+Dual Battery Monitoring
+-----------------------
+
+If the autopilot has additional analog-to-digital pins available, a second battery can be monitored by setting up the ``BATT2_`` parameters.  The values below allow reading a second battery's voltage and current using :ref:`The Cube's <common-thecube-overview>` POWER2 port.
+
+- :ref:`BATT2_MONITOR <BATT_MONITOR>` = **4** to measure both voltage and current (you will need to reboot the board after changing this)
+- :ref:`BATT2_VOLT_PIN <BATT_VOLT_PIN>` = **13**
+- :ref:`BATT_CURR_PIN <BATT_CURR_PIN>` = **14**
+
+The :ref:`BATT2_VOLT_MULT <BATT_VOLT_MULT>` and :ref:`BATT2_AMP_PERVLT <BATT_AMP_PERVLT>` should also be set by comparing the reported values vs values collected using a hand held voltage meter
+
+.. image:: ../../../images/powermodule-dual-monitoring.png
+    :target: ../_images/powermodule-dual-monitoring.png
+    :width: 450px
+
+Failsafe
+--------
+
+[site wiki="copter"]
+Instructions for :ref:`battery failsafe can be found here <failsafe-battery>`
+[/site]
+[site wiki="plane"]
+Instructions for :ref:`battery failsafe can be found here <apms-failsafe-function>`
+[/site]
+[site wiki="rover"]
+Instructions for :ref:`battery failsafe can be found here <rover-failsafes>`
+[/site]

@@ -1,18 +1,13 @@
 .. _common-installing-3dr-ublox-gps-compass-module:
 
-==============================
-3DR UBlox GPS + Compass Module
-==============================
+==========================
+UBlox GPS + Compass Module
+==========================
 
-This page covers the installation of the `3DR UBlox GPS + Compass module <https://store.3dr.com/products/3dr-gps-ublox-with-compass>`__.
+A UBlox GPS + Compass module is the most commonly used GPS for ArduPilot compatible autopilots.
+There are many versions of these modules available from various manufacturers, the recommended models are :ref:`here <common-positioning-landing-page>`.
 
-Overview
-========
-
-The *3DR UBlox GPS + Compass module* is the recommended GPS for Pixhawk,
-PX4 and APM2.6 (and above) flight controllers using Plane, Rover and
-Copter.  These come set-up with :ref:`the best known GPS configuration <common-ublox-gps>` and have been thoroughly tested by
-thousands of users.
+ArduPilot automatically configures the GPS soon after startup so there is no need for any GPS related calibration.  The :ref:`compass must be calibrated <common-compass-calibration-in-mission-planner>` however.
 
 .. image:: ../../../images/GPS_TopAndSide.jpg
     :target: ../_images/GPS_TopAndSide.jpg
@@ -22,8 +17,12 @@ Connecting the Autopilot
 
 .. _common-installing-3dr-ublox-gps-compass-module_connecting_to_pixhawk:
 
-Connecting to Pixhawk
----------------------
+.. image:: ../../../images/gps-connection.jpg
+     :target: ../_iamges/gps-connection.jpg
+
+
+Example: Connecting to Pixhawk
+------------------------------
 
 Connect the GPS's 6-pin DF13 connector to the Pixhawk's "GPS" port and
 the compass's 4-pin connector to the I2C port.  Alternatively the
@@ -33,115 +32,16 @@ if other I2C devices are to be attached.
 .. image:: ../../../images/pixhawk_with_dual_gps.jpg
     :target: ../_images/pixhawk_with_dual_gps.jpg
 
-.. note::
-
-   As of Copter 3.2 and recent versions of Plane and Rover, a
-   secondary GPS can be connected to the Pixhawk’s Serial 4/5 port. Limited
-   testing suggests that a secondary GPS can reduce the likelihood that GPS
-   glitches will affect the vehicle, but can also lead to sudden movements
-   of the vehicle when the primary GPS switches.
-
-.. tip::
-
-   On Copter we do
-   not recommend using a second compass due to these sudden vehicle
-   movements.
-
-If the parameters are set-up as shown below, the flight controller will
-use the GPS with the higher number of satellites (Note: it will switch
-when one GPS has at least 2 more satellites than the other).
-
--  GPS_AUTO_SWITCH = 1
--  GPS_TYPE2 = 1
-
-.. image:: ../../../images/GPS_MPSetup_Dual.jpg
-    :target: ../_images/GPS_MPSetup_Dual.jpg
-
-If using Copter 3.3 or higher or recent versions of Plane/Rover then
-this parameter should also be set:
-
--  SERIAL4_PROTOCOL = 5
+Details on how to setup and use a 2nd GPS can be found on the :ref:`GPS Blending page <common-gps-blending>` page.
 
 .. note::
 
-   The baud rate is set by the UBlox driver (setting
-   ``SERIAL4_BAUD = 38`` is ignored).
+   The baud rate is set by the UBlox driver (setting ``SERIAL4_BAUD = 38`` is ignored).
 
 .. note::
 
-   ArduPilot supports up to 3 compasses. However you cannot attach a
-   secondary external compass to Pixhawk because there isn't a spare
-   port.
+   ArduPilot supports many attached compasses, but only up to 3 compasses can be used during operation. See :ref:`common-compass-setup-advanced` .
 
-Connecting to APM 2.x
----------------------
-
-APM 2.6 is compatible with the *3DR UBlox GPS + Compass module*.
-
-To connect the GPS module to APM 2.6, attach the GPS port to the APM GPS
-port using the included 5-position-to-6-position cable (use the
-top-entry port, not the side-entry port), and attach the GPS MAG port to
-the APM I\ :sup:`2`\ C port using the included 4-position cable.
-
-.. image:: ../../../images/apm2_to_gps_wiring.jpg
-    :target: ../_images/apm2_to_gps_wiring.jpg
-
-APM 2.5 and APM 2.0 have an internal compass (unlike APM 2.6) which must
-be disabled by cutting a trace before you can connect the *3DR UBlox GPS
-+ Compass module* (the `video here <https://www.youtube.com/watch?v=niqvBmXeNjU>`__ shows how).
-
-Other than disabling the internal compass, connecting the UBlox is the
-same for APM2.0/APM2.5 as for APM2.6.
-
-.. note::
-
-   After connecting the external compass you will need to
-   re-calibrate the compass [site wiki="copter" inline="on"] including
-   :ref:`Compassmot <common-compass-setup-advanced_compassmot_compensation_for_interference_from_the_power_wires_escs_and_motors>`\ [/site]
-   (if you had run this procedure for the internal compass).
-
-Connecting to PX4
------------------
-
--  To connect GPS part of the this module to PX4, connect the GPS port
-   to the PX4FMU’s GPS connector.
--  Connect the compass lead on the module to the PX4IO’s I2C port.
--  The PX4IO board I2C port is the 4 pin connector located on the board
-   side opposite the Servo Out connectors in the second row of
-   connectors in and next to the board mounting hole.
--  When the external compass is plugged into the PX4IO boards I2C port,
-   it is automatically detected and used and the internal compass
-   is disabled.
-
-.. image:: ../../../images/PX4IOtopI2C.jpg
-    :target: ../_images/PX4IOtopI2C.jpg
-
-Next connect with the Mission Planner and go to **INITIAL SETUP \|
-Mandatory Hardware \| Compass** and set the Orientation to
-``ROTATION_ROLL_180``.
-
-Connecting to Erle-Brain2
--------------------------
-
--  Connect GPS 6 pin DF13 connector to the port labeled as "UART"
--  Connect Compass 4 pin DF13 connector to one of the ports labeled as
-   "I2C"
-
-.. image:: ../../../images/ErleBrain2_GPScompass.jpg
-    :target: ../_images/ErleBrain2_GPScompass.jpg
-
-An external compass is required (drivers are not yet available for the
-internal compass).
-
-If using Copter 3.3 or higher or recent versions of Plane/Rover then
-this parameter should also be set:
-
--  SERIAL4_PROTOCOL = 5
-
-.. note::
-
-   The baud rate is set by the UBlox driver (setting
-   ``SERIAL4_BAUD = 38`` is ignored).
 
 Mounting the GPS Module
 =======================
@@ -188,7 +88,7 @@ LED Indicators
 ==============
 
 The 3DR GPS+Compass module has two LED indicators: one for power (solid
-red) and one for GPS lock (flashing blue).
+red) and one for GPS lock (flashing blue). Most GPS have an led indicator for 3D GPS lock acquisition.
 
 +-------------+-----------------------------------------------+
 | **LEDs:**   | **Behavior:**                                 |
@@ -202,4 +102,4 @@ Advanced Configuration
 ======================
 
 Advanced configuration of the UBlox GPS's internal settings is
-documented in :ref:`UBlox GPS Configuration <common-ublox-gps>`.
+documented in :ref:`UBlox GPS Configuration <common-ublox-gps>`. But this is never used by the average user. Ardupilot automatically configures the gps during initialization.

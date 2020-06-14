@@ -23,9 +23,7 @@ the air.
    rotation and prop orientation.
 -  :ref:`Tuning <common-tuning>`- Verify performance and behavior,
    adjusting parameters to suit
--  :ref:`Mission planning <common-mission-planning>` and
-   :ref:`analysis <common-mission-analysis>` - Programming missions,
-   logging and analyzing telemetry data, ground-control set up.
+-  :ref:`Mission planning <common-mission-planning>` - Programming missions.
 -  :ref:`Flying <starting-up-and-calibrating-arduplane>`- Safe-skillful
    piloting and rules of the air, weather and location considerations,
    pre-flight checks, emergency procedures, operation examples
@@ -39,10 +37,11 @@ the air.
 
 .. note::
 
-   *APM is designed to easily integrate with most standard RC aircraft,
-   from simple high-wing trainers to high-speed swept wing fighters and
-   flying wings. If you have something out of the ordinary please assume
-   that a bit more tuning will be required to get things dialed in.*
+   *APM is designed to easily integrate with most standard RC
+   aircraft, from simple high-wing trainers to high-speed swept wing
+   fighters and flying wings, to quadplanes and tilt-rotors. If you
+   have something out of the ordinary please assume that a bit more
+   tuning will be required to get things dialed in.*
 
 All of us involved with this project care a great deal about the privacy
 and safety of those whom we share this planet with. Please be a good
@@ -53,5 +52,5 @@ weekends, we make it available for benevolent use.
     :maxdepth: 1
 
     Choosing a Ground Station <common-choosing-a-ground-station>
-    Choosing a Flight Controller <common-choosing-a-flight-controller>
-    Video Guides <videoguides>
+    Choosing an Autopilot <common-choosing-a-flight-controller>
+    All Supported Vehicle Types <common-all-vehicle-types>

@@ -6,20 +6,22 @@ Archived: Building ArduPilot for APM2.x with Eclipse on Windows
 
 .. warning::
 
-    This topic is archived because APM2.x is no longer a supported autopilot (since AC3.2.1). The information may still be relevant if attempting to use Eclipse for Pixhawk or other autopilots.
+    This topic is archived because APM2.x is no longer a supported autopilot (since AC3.2.1). 
+    The information may still be relevant if attempting to use Eclipse for Pixhawk or other autopilots.
     
 
 This article shows how to build ArduPilot for APM2.x on Windows using the Eclipse IDE.
 
 .. note::
 
-   These instructions show to use *Eclipse Luna* from the *PX4 Toolchain* to build for APM targets. They have been tested by building the *ArduCopter-3.2.1* branch on Windows 10.
+   These instructions show to use *Eclipse Luna* from the *PX4 Toolchain* to build for APM2.x targets. 
+   They have been tested by building the *ArduCopter-3.2.1* branch on Windows 10.
 
 .. warning::
 
    Copter 3.3 firmware (and later) and builds after Plane 3.4.0 no longer fit on APM2.x boards. Plane, Rover and AntennaTracker builds can still be installed at time of writing but you can no longer build APM2.x off the master branch (you will need to build off a supported release branch).
 
-   The last Copter firmware that can be built on APM 2.x `can be downloaded from here <http://firmware.ardupilot.org/downloads/wiki/firmware/ArduCopter_APM_2.0_Firmware_3.2.1.zip>`__.
+   The last Copter firmware that can be built on APM 2.x `can be downloaded from here <https://github.com/ArduPilot/ardupilot/archive/master-AVR.zip>`__.
 
 Preconditions
 =============

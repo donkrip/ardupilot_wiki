@@ -4,126 +4,104 @@
 SingleCopter and CoaxCopter
 ===========================
 
-.. warning::
+.. image:: ../images/single-copter-droner.jpg
+    :target: ../_images/single-copter-droner.jpg
 
-   Warning the SingleCopter (available since AC3.1) and CoaxCopter
-   (available since AC3.2) are not regularly used and have not been
-   extensively tested!
+SingleCopter with vertically mounted autopilot.  Image courtesy of "droner"
 
-**As this is VERY new many of the Single copters shown here use either
-mil-spec or very simple stabilize mode controllers.**
+Single and Coax copters have one or two propellers to provide thrust and 2 to 4 individual flaps to provide roll, pitch and yaw control.  The difference between a SingleCopter and a CoaxCopter is:
 
-The First Video of a SingleCopter using an APM 2.5
-==================================================
+*SingleCopter*
 
-https://vimeo.com/77850133
+- has a single motor and 4 independent flaps.
+- the vehicle's yaw is controlled by adjusting all four fins to point slightly clockwise or counter-clockwise.
 
-SingleCopter
-============
+*CoaxCopter*
 
--  A SingleCopter is an aerial vehicle with one central rotating
-   propeller thrusting downward past 4 controllable vanes.
--  The 4 control vanes (one in each quadrant) permits the control of the
-   vehicles roll, pitch and yaw.
--  The vanes also permit real time compensation for the motors direction
-   of rotation.
--  Altitude is controlled by adjusting the motor / propeller speed.
+- has two counter-rotating motors and at least 2 independent flaps (4 individual servos/flaps can be used but fins on opposite sides of the vehicle will move together)
+- the vehicle's yaw is controlled by adjusting the speeds of the two motors.  I.e. speeding up the clockwise motor while slowing down the counter-clockwise motor will cause the vehicle to rotate counter-clockwise
 
-   |vtolcustom2|
+Mounting and Connecting the autopilot
+---------------------------------------------
 
-**An innovative and quite successful hobbyist SingleCopter**
+.. image:: ../images/single-copter-layout.png
+    :target: ../_images/single-copter-layout.png
 
-.. image:: ../images/P1060929.jpg
-    :target: ../_images/P1060929.jpg
+By default the autopilot should be mounted similar to a "plus" quad.  The board should be horizontal with the white arrow pointing towards the forward flap.
+As with other vehicles the board should be placed close to the center of gravity of the vehicle.
+If it is more convenient to mount the autopilot pointing up, set :ref:`AHRS_ORIENTATION <AHRS_ORIENTATION>` to 25 (Pitch270).
 
-Connecting the Flight Controller to the SingleCopter:
------------------------------------------------------
+Connect the servos to the autopilot's outputs, normally used in Copter for motors, and assigned in  their SERVOx_FUNCTION as Motor 1 through Motor 6:
 
--  Connect the APM, PX4 or Pixhawk servo output channels 1-4 to the
-   SingleCopters 4 control fins as shown.
--  Connect the APM, PX4 or Pixhawk servo output channel 7 to the ESC for
-   the brushless motor that powers the main single rotor
--  The 4 fins are attached to four arms and it's a bit like a Plus quad.
--  Looking down on the APM from above as in the attached diagram.
-   "servo1" would be attached to the APM's output channel #1, etc.
+- Motor 1 : Forward Flap
+- Motor 2 : Right Flap
+- Motor 3 : Back Flap (optional for CoaxCopter)
+- Motor 4 : Left Flap (optional for CoaxCopter)
+- Motor 5 : Upper (CCW) Motor
+- Motor 6 : Lower (CW) Motor (CW, only for CoaxCopter)
 
-.. image:: ../images/SingleCopterBothView1.jpg
-    :target: ../_images/SingleCopterBothView1.jpg
+Loading the Firmware
+--------------------
 
-Load the Firmware
------------------
+As of Copter-3.5.x all of the multicopter firmware (quad, hexa, octa, octaquad, y6, tri, single, coax) including single and coax copter have been consolidated into a single firmware.
+This means the quad (or other multicopter) firmware should be loaded onto the autopilot and then please set:
 
--  For the time being, the user needs to compile the source code
-   themselves.
--  Add this line to the APM_Config.h: \ **#define FRAME_CONFIG
-   SINGLE_FRAME**
--  In the near future this will be added as a downloadable binary
-   to \ **firmware.ardupilot.org** and likely as a Mission Planner
-   loadable icon.
+- :ref:`FRAME_CLASS <FRAME_CLASS>` to 8 for SingleCopter or 9 for CoaxCopter
 
-Configuration
-=============
+Setting up the flaps
+====================
 
-If digital servos are used the SV_SPEED parameter can be set to 125 (or
-even higher).  If slower analog servos are used set this parameter to
-50.
+The neutral position, direction of movement, minimum and maximum deflection of each flap can be configured with the SERVOx_TRIM, SERVOx_REVERSED, SERVOx_MIN and SERVOx_MAX parameters (where "x" is the RC output number).  For example these are the parameters for the forward flap/servo which is connected to RC output 1:
 
-CoaxCopter
-==========
+- :ref:`SERVO1_MIN <SERVO1_MIN>`: the forward flap/servo's lowest PWM value before it hits its physical limits.
+- :ref:`SERVO1_MAX <SERVO1_MAX>`: the forward flap/servo's highest PWM value before it hits its physical limits.
+- :ref:`SERVO1_TRIM <SERVO1_TRIM>`: the forward flap/servo's PWM value close to what is required to keep the vehicle from spinning.
+- :ref:`SERVO1_REVERSED <SERVO1_REVERSED>`: the forward flap/servo's reverse setting.  0 = servo moves in default direction, 1 to reverse direction of movement.
 
--  A CoaxCopter is an aerial vehicle with two counter rotating central
-   propellers thrusting downward past 2 controllable vanes (one side to
-   side and the other from front to back) that permit control of roll
-   and pitch.
--  Yaw is controlled by varying top and bottom propeller speeds relative
-   to each other.
--  There are two variant motor configurations of the CoaxCopter:
+Testing the flap movement
+=========================
 
-   -  A contra-rotating motor pair with both Propellers on top and the
-      shaft of the bottom motor passing up through the hollow shaft of
-      the top motor
-   -  And two motors mounted back to back with one propeller above and
-      the other beneath with appropriate support struts.
-   -  Both variations are illustrated below.
+- Remove the propellers
+- Place the vehicle on a flat surface in front of the pilot
+- Arm the vehicle in Stabilize mode
+- Raise the throttle on the transmitter and move the roll, pitch and yaw sticks and confirm the flaps move as described below
+
+*SingleCopter*
+
+- transmitter roll right makes forward and back fins move right
+- transmitter pitch forward causes left and right fins to move forward
+- transmitter yaw right causes forward fin to move left, right fin to move forward, back fin to move right, left fin to move back
+
+*CoaxCopter*
+
+- transmitter roll right makes forward and back fins move right
+- transmitter pitch forward causes left and right fins to move forward
+- transmitter yaw right causes no change in fin movement but motor speed changes.  Top (ccw) motor should speed up, bottom (cw) should slow down.
+
+Video of the first ArduPilot powered SingleCopter
+=================================================
+
+.. vimeo:: 77850133
+   :width: 400
+   :height: 400
+
+Below are non-ArduPilot single copters and coax copters to provide inspiration:
+
+The vehicle shown below uses a counter-rotating motor pair with both propellers above the motors and the shaft of the bottom motor passes up through the hollow shaft of the top motor.
 
 .. image:: ../images/vtol.jpg
     :target: ../_images/vtol.jpg
 
+The vehicle below has two motors mounted back to back with one propeller above and the other below with appropriate support struts.
+
 .. image:: ../images/mav_electric.jpg
     :target: ../_images/mav_electric.jpg
 
-Connecting the Flight Controller to the CoaxCopter:
----------------------------------------------------
+.. image:: ../images/vtolcustom2.jpg
+    :target: ../_images/vtolcustom2.jpg
 
--  Connect the APM, PX4 or Pixhawk servo output channels 1 and 2 to the
-   CoaxCopters two control fins servos as shown (Note: the diagram below
-   is incorrect, "Servo3" should be "Servo1" and "Servo4" should be
-   "Servo2").
--  Connect the APM, PX4 or Pixhawk servo output channel 3 and 4 to the
-   ESC for the brushless motors that power the main dual rotors.
--  The two wide fins are attached to two cross arms and works a bit like
-   the elevator and ailerons of a fixed wing plane.
--  Below is an illustration looking down on an APM/Pixhawk mounted on
-   the frame.  Note the warning re Servo3 and Servo4 being mislabelled.
-
-.. image:: ../images/CoaxCopterTopView1.jpg
-    :target: ../_images/CoaxCopterTopView1.jpg
-
-Load the Firmware
------------------
-
--  For the time being, the user needs to compile the source code
-   themselves.
--  Add this line to the APM_Config.h: \ **#define FRAME_CONFIG
-   COAX_FRAME**
--  In the near future this will be added as a downloadable binary
-   to \ **firmware.ardupilot.org** and likely as a Mission Planner
-   loadable icon.
-
-And a Video of a Research SingleCopter in action:
+.. image:: ../images/P1060929.jpg
+    :target: ../_images/P1060929.jpg
 
 ..  youtube:: FFiPbyigxVI#t=40
     :width: 100%
-
-.. |vtolcustom2| image:: ../images/vtolcustom2.jpg
-    :target: ../_images/vtolcustom2.jpg

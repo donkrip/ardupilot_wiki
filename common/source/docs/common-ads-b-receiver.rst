@@ -1,12 +1,11 @@
 .. _common-ads-b-receiver:
 
-[copywiki destination="copter,plane"]
 
 ==============
 ADS-B Receiver
 ==============
 
-This article describes how to attach and configure the MAVLink enabled `uAvionix ADS-B PING™ <http://www.uavionix.com/products/pingrx/>`__ sensor so that the pilot is aware of nearby manned aircraft and optionally to allow the vehicle to automatically avoid near misses.
+This article describes how to attach and configure the MAVLink enabled `uAvionix ADS-B PING™ <https://uavionix.com/products/pingrx/>`__ sensor so that the pilot is aware of nearby manned aircraft and optionally to allow the vehicle to automatically avoid near misses.
 
    ..  youtube:: boe-25OI4bM
     :width: 100%
@@ -19,21 +18,24 @@ ADS-B (aka `Automatic Dependent Surveillance Broadcast <https://en.wikipedia.org
 
 .. warning::
 
-   The avoidance features are new features still under development and should be used with caution.
+   The avoidance features are new features still under development and should be used with caution. It is highly recommended that the RCx_OPTION =38 (ADSB Avoidance En) feature be setup if ADSB avoidance is enabled to allow easy disabling while airborne, if so desired.
 
 Required Hardware
 =================
 
-The uAvionix Ping sensor can be purchased directly from `uAvionix <http://www.uavionix.com/products/>`__ or from the following vendors:
+The uAvionix Ping sensor can be purchased directly from `uAvionix <https://uavionix.com/products/>`__ or from the following vendors:
 
-   -  USA: `Mid-Atlantic Multirotor <http://www.midatlanticmultirotor.com/product/ping/>`__
+   -  USA: `Unmanned Systems Source <https://www.unmannedsystemssource.com/shop/atc-devices/pingrx-ads-b-receiver/>`__
+   -       `R Cubed Engineering <http://www.rcubedengineering.com/ecommerce/>`__
    -  U.K.: `Unmanned Tech <http://www.unmannedtech.co.uk/>`__
    -  Germany: `UAV Store <http://www.uav-store.de/ads-b-receivers/>`__
    -  Asia: `jDrones pingRX <http://store.jdrones.com/ping_ads_b_receiver_p/adsbping01.htm>`__
    -  Japan: `Japan Drones <http://japandrones.com/shopdetail/000000000124/004/X/page1/order/>`__
 
+The full reseller list can be found at `uAvionix <https://uavionix.com/resellers/>`__
 
-Connecting to the flight controller
+
+Connecting to the autopilot
 ===================================
 
 .. image:: ../../../images/adsb_and_pixhawk.png
@@ -65,6 +67,10 @@ For the Ping2020 you'll need to set the _PROTOCOL value to 2. For example, when 
 
 You will need to reboot your board after making those changes.
 
+To enable streaming the ADSB data to the GCS you'll want to check your StreamRate param. In some cases it is already set but it's good to check. These rates are adjustable per telemetry like in the case of having both a high-bandwidth and a low-bandwitdh link attached. The param to adjust the rate would depend on which one your GCS is connected to. In most cases, it is telem1.
+
+-  :ref:`SR1_ADSB <SR1_ADSB>` 5 (meaning 5Hz)
+
 Once operational aircraft within about 50km should appear on the ground
 station map.
 
@@ -77,17 +83,20 @@ To test the system you can compare with flights shown on
 Enabling Manned Vehicle Avoidance
 =================================
 
-Copter-3.4 (and higher) and very recent versions of Plane include a new flight mode AVOID_ADSB that attempts to avoid manned vehicles based on the ADS-B sensor's output.
+Copter-3.4 (and higher) and very recent versions of Plane include a new flight mode AVOID_ADSB that attempts to avoid manned vehicles based on the ADS-B sensor's output. Entry into this mode is automatic when avoidance is necessary based on the parameters below. Exit is also automatic when the threat has passed.
+
 To enable this feature connect with a Ground Station and set the following parameters:
 
 -  :ref:`AVD_ENABLE <AVD_ENABLE>` : set to "1" to enable ADS-B based avoidance (param refresh may be necessary after setting this)
--  :ref:`AVD_F_DIST_XY <AVD_F_DIST_XY>` : the horizontal distance in meters that should be considered a near-miss
+-  ``AVD_F_DIST_XY`` : the horizontal distance in meters that should be considered a near-miss
 -  :ref:`AVD_F_DIST_Z <AVD_F_DIST_Z>` : the vertical distance in meters above or below the vehicle that should be considered a near-miss
--  :ref:`AVD_F_TIME <AVD_F_TIME>` : how many seconds in advance of a projected near-miss (based on the vehicle's current position and velocity) the vehicle should begin the :ref:`AVD_F_ACTION <AVD_F_ACTION>`
--  :ref:`AVD_F_ACTION <AVD_F_ACTION>` : controls how the vehicle should respond to a projected near-miss (i.e. 2:Climb Or Descend, 3:Move Horizontally, 4:Move Perpendicularly in 3D, 5:RTL or 6:Hover)
+-  :ref:`AVD_F_TIME <AVD_F_TIME>` : how many seconds in advance of a projected near-miss (based on the vehicle's current position and velocity) the vehicle should begin the ``AVD_F_ACTION``.
+-  ``AVD_F_ACTION`` : controls how the vehicle should respond to a projected near-miss (i.e. 2:Climb Or Descend, 3:Move Horizontally, 4:Move Perpendicularly in 3D, 5:RTL or 6:Hover)
 -  :ref:`AVD_F_RCVRY <AVD_F_RCVRY>` : sets how the vehicle will behave after the vehicle has cleared the near-miss area (i.e. 1 = resume previous flight mode)
 
 Note: there are equivalent "Warn" parameters (i.e. AVD_W_DIST_XY) that can be used to adjust when warnings to the pilot will appear on the ground station.
+
+In ArduPilot firmware versions 4.0 and later, the entry into this mode can be enabled or disabled via an RC channel switch by setting the channel's RCx_OPTION = 38 (ADSB Avoidance En). If the RC PWM is >1800us, then entry into this mode is enabled if a threat presents.
 
 .. warning::
 
@@ -95,9 +104,10 @@ Note: there are equivalent "Warn" parameters (i.e. AVD_W_DIST_XY) that can be us
 
    ..  youtube:: quomxCIPP74
     :width: 100%
-   
+
+
 Older version of ADS-B based avoidance in Plane-3.5
-======================================
+===================================================
 
 Plane's earlier version of ADS-B based avoidance used these different parameters:
 
@@ -115,7 +125,7 @@ Vehicle Database
 
 When enabled, the ADS-B library will store information for up to 50 vehicles
 detected by the ADS-B receiver but can be further limited using the
-:ref:`ADSB_LIST_SIZE <ADSB_LIST_SIZE>` parameter. Due to some experimental work
+``ADSB_LIST_SIZE`` parameter. Due to some experimental work
 in other features, such as EKF2, available RAM may be limited. It is
 important to note that when ADS-B is disabled (ADSB_ENABLE=0) then the
 memory is released, effectively freeing up about 1KB of RAM. When
@@ -124,13 +134,13 @@ potential conflicts.
 
 Developer information including Simulation
 ==========================================
-The data is transmitted via the `ADSB_VEHICLE message <http://mavlink.org/messages/common#ADSB_VEHICLE>`__. When
+The data is transmitted via the `ADSB_VEHICLE message <https://mavlink.io/en/messages/common.html#ADSB_VEHICLE>`__. When
 received by ArduPilot, it is streamed out using the SRx_ADSB value where x is the telemetry port number and the
-value is how many vehicles per second to be streamed. The list will not repeat any faster than 1 second. This
+value is how many vehicles per second to be streamed. If using telem1 the streamrate param would be ``SR1_ADSB``. The list will not repeat any faster than 1 second. This
 flexibility is useful to conserve bandwidth on data links but also allow maximum update rate for high-speed links
 such as an on-board companion computer.
 
-Ardupilot's SITL includes the simulation of ADS-B enabled aircraft.
+ArduPilot's SITL includes the simulation of ADS-B enabled aircraft.
 To enable this you must have pymavlink v1.1.70 or greater. If you have
 an older version, use:
 

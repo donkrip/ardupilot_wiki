@@ -4,71 +4,69 @@
 Building the code
 =================
 
-The linked articles below explain how to build ArduPilot for different
-target hardware on the supported development environments (Linux,
-Windows, Mac OSX). The included links also cover building the code for
-ground stations.
+The linked articles below explain how to setup your build environment on Linux/Ubuntu, MacOS or Windows and then build ArduPilot with either `waf <https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md>`__ or make.
 
-Plane, Copter, Rover
-====================
+The instructions below assume that you have already :ref:`installed git <git-install>`, :ref:`forked <git-fork>` and :ref:`cloned <git-clone>` the ArduPilot repo.
+
+Setting up the Build Environment
+--------------------------------
+
+- :ref:`Setup the Build Environment on Linux/Ubuntu <building-setup-linux>`
+- :ref:`Setup the Build Environment on Windows <building-setup-windows>`
+- :ref:`Setup the Build Environment on MacOSX <building-setup-mac>`
+
+Building / Compiling
+--------------------
+
+ArduPilot currently supports two build systems, `waf <https://waf.io/>`__ and **make** with waf being the recommended option because it allows building for all boards.
+In most cases the build dependencies described for **waf** and **make** are the same, the only part of the instructions that changes is the build commmand. 
+
+**Linux / MacOSX users:**
+
+- Linux and MacOSX users should build with waf as described in `BUILD.md <https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md>`__.
+
+.. youtube:: lNSvAPZOM_o
 
 **Windows users:**
 
--  :ref:`Building ArduPilot with Arduino for Windows <building-ardupilot-with-arduino-windows>`
--  :ref:`Pixhawk/PX4 on Windows with Make <building-px4-with-make>` 
--  :ref:`Editing & Building with Atmel Studio or Visual Studio <building-ardupilot-apm-with-visual-studio-visual-micro>`
+Windows users have 3 or 4 options for setting up the build environment. All of the below options will allow building of native (SITL) and Pixhawk-based boards.
 
-**MacOS users:**
+- :ref:`Setup the waf Build Environment on Windows using Cygwin <building-setup-windows-cygwin>`
+- :ref:`Setup the waf Build Environment on Windows10 using WSL <building-setup-windows10>`
+- :ref:`Setup Eclipse on Windows for building with waf <building-setup-windows-eclipse>`
 
--  :ref:`APM2.x on MacOS with Arduino <building-the-code-on-mac>`
--  :ref:`Pixhawk/PX4 on MacOs with Make <building-px4-with-make-on-mac>`
+**Board specific instructions:**
 
-**Linux users:**
-
--  :ref:`APM2.x on Linux with Make <building-the-code-onlinux>`
--  :ref:`Pixhawk/PX4 on Linux with Make <building-px4-for-linux-with-make>`
--  :ref:`Beaglebone Black with Make <building-for-beaglebone-black-on-linux>`
--  :ref:`Building for Flymaple on Linux <building-apm-for-flymaple>`
--  :ref:`Building for NAVIO+ on RPi2 <building-for-navio-on-rpi2>`
--  :ref:`Building for NAVIO2 on RPi3 <building-for-navio2-on-rpi3>`
--  :ref:`Building for Erle-Brain <building-for-erle-brain>`
--  :ref:`Building for Erle-Brain 2 <building-for-erle-brain-2>`
--  :ref:`Building for Bebop on Linux <building-for-bebop-on-linux>`
--  :ref:`Building for Bebop 2 on Linux <building-for-bebop-2>`
-
-**IDE/Cross platform**
-
--  :ref:`Building With Make (Win, Mac, Linux) <building_with_make>`
-
-**Related information**
-
--  :ref:`Git Submodules <git-submodules>`
+- :ref:`Building for NAVIO2 on RPi3 <building-for-navio2-on-rpi3>`
+- :ref:`Building for Bebop2 on Linux <building-for-bebop-2>`
+- :ref:`Building for Bebop on Linux <building-for-bebop-on-linux>`
+- :ref:`Building for Beaglebone Black <building-for-beaglebone-black-on-linux>`
 
 Mission Planner
-===============
+---------------
 
--  :ref:`Building Mission Planner with Visual Studio <buildin-mission-planner>`
+- :ref:`Building Mission Planner with Visual Studio <building-mission-planner>`
+
+
+
+Links to current build pages
+----------------------------
 
 .. toctree::
     :maxdepth: 1
 
-    Building Pixhawk/PX4 on Linux with make <building-px4-for-linux-with-make>
-    Building for Pixhawk/PX4 on Windows with Make <building-px4-with-make>
-    Building for Pixhawk/PX4 on Mac with Make <building-px4-with-make-on-mac>
-    Building for Pixhawk/PX4 using Eclipse on Windows <editing-the-code-with-eclipse>
-    Building for Pixhawk/PX4 on Windows or Linux with QtCreator <building-px4-with-qtcreator>
-    Building for APM2.x with Make (Win, Mac, Linux) <building_with_make>
-    Building ArduPilot for APM2.x on Windows with Arduino <building-ardupilot-with-arduino-windows>
-    Building for APM2.x on Mac with Arduino <building-the-code-on-mac>
-    Building APM with Atmel Studio or Visual Studio <building-ardupilot-apm-with-visual-studio-visual-micro>
-    Building for NAVIO+ on RPi2 <building-for-navio-on-rpi2>
+    Setup the Build Environment on Linux/Ubuntu <building-setup-linux>
+    Setup the Build Environment on Windows <building-setup-windows>
+    Setup the waf Build Environment on Windows10 using WSL <building-setup-windows10>
+    Setup the waf Build Environment on Windows using Cygwin <building-setup-windows-cygwin>
+    Setup Eclipse on Windows for building with waf <building-setup-windows-eclipse>
+    Setup the Build Environment on MacOSX <building-setup-mac>
     Building for NAVIO2 on RPi3 <building-for-navio2-on-rpi3>
-    Building Mission Planner with Visual Studio <buildin-mission-planner>
     Building for Erle-Brain 2 <building-for-erle-brain-2>
     Building for Erle-Brain <building-for-erle-brain>
     Building for Bebop 2 <building-for-bebop-2>
-    Building for Qualcomm Snapdragon Flight Kit <building-for-qualcomm-snapdragon-flight-kit>
     Building for Bebop on Linux <building-for-bebop-on-linux>
     Building for BeagleBone Black <building-for-beaglebone-black-on-linux>
-    Building for Flymaple on Linux <building-apm-for-flymaple>
-    Git Submodules <git-submodules>
+    Building Mission Planner with Visual Studio <building-mission-planner>
+    ArduPilot Pre-Built Binaries <pre-built-binaries>
+

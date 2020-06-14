@@ -45,7 +45,7 @@ The following steps are for specifying Rally Points in Mission Planner:
     
 #. The Rally loiter altitudes need to be specified (note that the
    default altitude for Rally Points is the default waypoint altitude
-   value):
+   value and is relative to the home location):
 
    .. image:: ../../../images/mp_rally_altitude_dialog.jpg
        :target: ../_images/mp_rally_altitude_dialog.jpg
@@ -64,10 +64,9 @@ The following should be considered when using Rally Points:
    are inside the geofence.
 #. Make sure Rally Point altitudes are high enough to clear terrain and
    buildings.
-#. Because of the limited flash memory size on the APM hardware the
+#. Because of the limited flash memory size on the APM2.x hardware the
    number of Rally Points is restricted to 10 on Plane and 6 on Copter
-   -- this limit may be expanded on other platforms such as PX4 and
-   Pixhawk in the future.
+   -- this limit may be expanded on other platforms such as Pixhawk in the future.
 #. On Plane, loiter radius for a Rally Point is the same as all other
    loiter points; determined by the :ref:`WP_LOITER_RAD <plane:WP_LOITER_RAD>`
    parameter.
@@ -83,10 +82,9 @@ The following MAVLink parameters control Rally Point behavior:
    considered for an RTL event.  If all Rally Points are greater than
    this distance from the aircraft, then the Home location is used for
    RTL events (at altitude :ref:`ALT_HOLD_RTL <plane:ALT_HOLD_RTL>`)
-   **unless** Home is farther away than the nearest Rally Point -- in
-   which case the nearest Rally point is used.  This parameter is to
-   prevent fly offs if Rally Points have been specified for multiple
+   This parameter is to prevent fly offs if Rally Points have been specified for multiple
    flying fields. This parameter can be disabled if set to 0.
+#. :ref:`RALLY_INCL_HOME<RALLY_INCL_HOME>` allows Homr to be included in the RALLY points, allowing it to return to home if closer than any RALLY point.
 #. :ref:`RALLY_TOTAL <plane:RALLY_TOTAL>` is
    the number of Rally Points currently specified. This parameter will
    be set for you by your ground control station (e.g., Mission Planner)
@@ -109,3 +107,19 @@ Example Flight
 
 
 [copywiki destination="copter,plane,rover,planner"]
+
+Appendix
+========
+
+The RALLY fields present in a rally point file are as follows:
+
+- Lat: Latitude of Rally Point
+- Lon: Longitude of Rally Point
+- Alt: AGL altitude of Rally Point as referenced from the point where the copter/plane got a GPS lock.
+- Break Altitude: Specific to NPS fixed wings; the point at which to break out of a loiter and fly toward the landing waypoint. Also in AGL.
+- Desired Heading: Whether to verify that the plane is going the correct heading before breaking out of the loiter (see break altitude).
+- Flags:
+    - 1 = FAVORABLE_WIND. Flag set when requiring favorable winds for landing.  We never got around to implementing this at the Naval Postgraduate School, but basically whether or not we are required to land with the aircraft facing into the wind.
+    - 2 = LAND_IMMEDIATELY. Flag set when plane is to immediately descend to break altitude and land without GCS intervention.  Flag not set when plane is to loiter at Rally point until commanded to land.
+
+

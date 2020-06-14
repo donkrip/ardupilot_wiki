@@ -38,9 +38,10 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.pngmath',
+    'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinxcontrib.youtube', #For youtube embedding
+    'sphinxcontrib.vimeo', #For vimeo embedding
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -59,7 +60,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'ArduPilot'
-copyright = u'2016, ArduPilot Dev Team.'
+copyright = u'2020, ArduPilot Dev Team.'
 author = u'ArduPilot Dev Team'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -387,3 +388,6 @@ epub_exclude_files = ['search.html']
 
 #Intersphinx mapping config (done globally)
 intersphinx_mapping = common_conf.intersphinx_mapping
+
+def setup(app):
+   common_conf.setup(app)

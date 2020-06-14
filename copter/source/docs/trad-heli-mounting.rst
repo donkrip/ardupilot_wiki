@@ -1,21 +1,25 @@
 .. _trad-heli-mounting:
 
-==========================================================
-Traditional Helicopter – Mounting APM/Pixhawk to the Frame
-==========================================================
+============================================================
+Traditional Helicopter – Mounting the Autopilot to the Frame
+============================================================
 
-The recommended method for mounting your APM/Pixhawk is to build an
-extra layer for the APM/Pixhawk between the main body and the landing
-gear as show in the image below.
+On larger helicopters of approximately 550-class or larger the APM, Pixhawk or
+Cube has been mounted in various locations such as on the FBL unit tray, on
+top of the tail drive case, or even on the side of the frame (very popular).
+
+
+Below is a possible method to mount a full-size autopilot on a smaller sized
+helicopter. The Pixracer is popular on smaller frames that have less mounting options.
 
 -  Separate the helicopter's main body from it's landing gear
 -  Attach one carbon fibre plate to the body, the other to the landing
    gear
 -  Drill holes in the upper and lower mounting plates so that the plates
    can be attached with four strong 3cm or 4cm stand-offs
--  Mount the APM/Pixhawk to the bottom mounting plate using vibration
+-  Mount the autopilot to the bottom mounting plate using vibration
    dampening foam (see :ref:`Vibration Dampening wiki page <common-vibration-damping>` for ideas on mounting methods to
-   isolate the flight controller from vibrations)
+   isolate the autopilot from vibrations)
 
 .. image:: ../images/TradHeli_Mount3D.jpg
     :target: ../_images/TradHeli_Mount3D.jpg

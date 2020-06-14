@@ -41,6 +41,15 @@ consume more than 90amps at full throttle).
    servo rail, backup power and support for larger batteries. Using this
    sort of module means that you don't need to think about most of the
    wiring issues discussed in the rest of this article.
+   
+.. warning::
+
+   Pixhawk supplies power for an RC receiver if that receiver is connected via a 3-conductor servo cable to the RC connector on the Pixhawk. If that receiver is also connected to the SBus port on the
+   Pixhawk to communicate an analog RSSI signal via a 3-conductor cable, there is an opportunity to inadvertently power the servo bus from the primary PixHawk power input thru the radio.
+
+Some radios (e.g., FRSky) will pass power received on their RC output cable out on their analog RSSI port. And the PixHawk servo-rail power bus includes the SBus +5v pin.
+
+Removing the center conductor from the RSSI monitoring cable will avoid powering the Pixhawk servo bus from the wrong (or from multiple) voltage sources thru the RC radio receiver.
 
 Powering/backup off the servo rail
 ==================================
@@ -56,6 +65,7 @@ condition the power across the rail and restrict it to less than 5.7V.
 
 .. image:: ../../../images/zener-diode.jpg
     :target: ../_images/zener-diode.jpg
+    :width: 300px
 
 This method can also be used as backup power for Pixhawk when using a
 power module. If the voltage provided by the power module falls too low
@@ -113,8 +123,8 @@ General wiring recommendations
    moved rapidly ). The key thing is that the digital servo causes the
    voltage on the rail to rise above the critical 5.7V level. Above that
    level the Pixhawk power management will cut power to the FMU and the
-   Pixhawk will reboot. If that happens when flying you will lose your
-   aircraft.
+   Pixhawk will reboot.
+   **If that happens when flying you will lose your aircraft.**
 
    .. image:: ../../../images/servo-V-spike.jpg
        :target: ../_images/servo-V-spike.jpg

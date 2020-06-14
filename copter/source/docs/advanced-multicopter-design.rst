@@ -1,8 +1,8 @@
 .. _advanced-multicopter-design:
 
-===========================
-Advanced MultiCopter Design
-===========================
+=====================================
+Archived: Advanced MultiCopter Design
+=====================================
 
 This section is topics related to advanced multicopter construction and
 design.
@@ -81,16 +81,16 @@ There are several popular frame layouts for MultiCopters
    -  A humming bird sized `Estes Proto X <http://www.estesrockets.com/helis-quads/quadcopters/004606-proto-x>`__
       is shown below.
 
-.. image:: ../images/leste4606__92098.1384842703.1020.1020.jpg
-    :target: ../_images/leste4606__92098.1384842703.1020.1020.jpg
+      .. image:: ../images/leste4606__92098.1384842703.1020.1020.jpg
+          :target: ../_images/leste4606__92098.1384842703.1020.1020.jpg
 
 
 -  A fifteen thousand dollar SteadyDrone Q4D-X Quadcopter with 28"
    propellers, 8KG lifting capability and claimed 60 minute flight
    times.
 
-.. image:: ../images/SteadiDroneQ4DX.jpg
-    :target: ../_images/SteadiDroneQ4DX.jpg
+   .. image:: ../images/SteadiDroneQ4DX.jpg
+       :target: ../_images/SteadiDroneQ4DX.jpg
 
 -  For professional use, HexaCopters and OctoCopters with 6 and 8
    Motor/propeller propulsion units are popular.
@@ -106,8 +106,8 @@ There are several popular frame layouts for MultiCopters
    -  However it also results in some reduction in flight efficiency and
       endurance all other things being equal.
 
-.. image:: ../images/hexacopter.jpg
-    :target: ../_images/hexacopter.jpg
+   .. image:: ../images/hexacopter.jpg
+       :target: ../_images/hexacopter.jpg
 
 -  Hex Y6 and Octo X8 designs with pairs of coaxial motor/propeller
    units mounted back to back are also becoming popular.
@@ -142,9 +142,8 @@ There are several popular frame layouts for MultiCopters
 -  There are also variable pitch Multicopters for incredible acrobatic
    performance.
 
-   -  Variable pitch multicopters have some interesting potential uses
-      as well like the `Curtis Youngblood Stingray 500 <http://curtisyoungblood.com/V2/products/quadcopters/stingray-500>`__ shown
-      below.
+   -  Variable pitch multicopters have some interesting potential uses as well like the 
+      `Curtis Youngblood Stingray 500 <http://curtisyoungblood.com/V2/products/quadcopters/stingray-500>`__ shown below.
    -  Servo control of the props (rotors) produces roll, pitch and yaw
       so they are often powered by a single motor with shaft or belt
       drive.
@@ -169,7 +168,7 @@ Motors, propellers and ESCs
 For multicopters, motors, propellers and ESCs (speed controllers) are
 critical and have been failure prone in the past.
 
-This ECalc based `Xcopter: motor - propeller - battery - ESC calculator <http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en>`__ will
+This ECalc based `Xcopter: motor - propeller - battery - ESC calculator <https://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en>`__ will
 help you pick the best components for your copter.
 
 -  Quadcopter design will be used for illustration as they are the most
@@ -288,11 +287,11 @@ help you pick the best components for your copter.
 Professional Grade Power System for large Quadcopters (28" Propellers)
 ----------------------------------------------------------------------
 
--  The `Tigermotor U8 Pro <http://www.rctigermotor.com/html/2013/Efficiency-Type_1219/176.html>`__
-   Series motor is currently top of the line for a commercially
+-  The `Tigermotor U8 Pro Series <http://www.rctigermotor.com/html/2013/Efficiency-Type_1219/176.html>`__
+   motor is currently top of the line for a commercially
    available (large) copter motor.
 
-   -  It features Environmentally protected, closed construction and
+   - It features Environmentally protected, closed construction and
       easily replaceable bearings.
 
 .. image:: ../images/TmotorU8Pro1.jpg
@@ -329,7 +328,7 @@ Professional Grade Power System for Medium Quadcopters (16" Propellers)
 -  Clearly, applying similar quality to a more reasonably sized (and
    cost) copter is normally going to be a lot more practical.
 
-   -  A `380KV T-Motor 4008 <http://www.rctigermotor.com/html/2013/Professional_0912/52.html>`__
+   -  A `380KV T-Motor 4008 <http://www.rctigermotor.com/html/2013/Professional_0912/52.html>`__ 
       is $85.00, 16x5 CF Prop $90.00 a pair and 30 Amp Pro ESC $50.00 @
       four each = $720.00.
    -  This setup will work well for a copter up to 10 pounds or so and
@@ -351,28 +350,16 @@ Professional Grade Power System for Medium Quadcopters (16" Propellers)
 -  This is a very superior ($120.00) `KDE 4014XF-380KV Motor <https://www.kdedirect.com/products/kde4014xf-380>`__ with 3 large
    replaceable ABEC bearings rated at about 200 hours.
 
-   -  This motor is capable of using 13" to 18" propellers and operating
-      very efficiently with a wide range of batteries from 3 cell to 6
-      cell.
-   -  This KDE Motor has a phenomenal range of operation and can be used
-      on a 7 pound to a 20 pound Quadcopter.
-   -  Every component and manufacturing technique was clearly optimized
-      to produce the best possible motor without compromise.
-   -  This motor has a finned heat-sink case and a self ventilated
-      design with high temperature encapsulated components.
-   -  In fact it is designed to run, if necessary, continuously at
-      temperatures that would instantly destroy most other motors.
-   -  It is reasonable to expect that various configurations could
-      provide well over an hour of useful operating time with cameras.
-   -  It is feasible to produce a QuadCopter that will approach the
-      performance of the $15,000.00 Steadidrone at a fraction of the
-      cost.
-   -  A similar practical lifting capability and nearly 40 minute useful
-      flight times should be achievable even with 18" Propellers.
-   -  And given the extreme over design and ruggedness of the motors,
-      similar reliability and longevity could also be expected.
-   -  This is the motor I will be using in my next Quadcopter and I will
-      allow for up to 18" propellers.
+   -  This motor is capable of using 13" to 18" propellers and operating very efficiently with a wide range of batteries from 3 cell to 6 cell.
+   -  This KDE Motor has a phenomenal range of operation and can be used on a 7 pound to a 20 pound Quadcopter.
+   -  Every component and manufacturing technique was clearly optimized to produce the best possible motor without compromise.
+   -  This motor has a finned heat-sink case and a self ventilated design with high temperature encapsulated components.
+   -  In fact it is designed to run, if necessary, continuously at temperatures that would instantly destroy most other motors.
+   -  It is reasonable to expect that various configurations could provide well over an hour of useful operating time with cameras.
+   -  It is feasible to produce a QuadCopter that will approach the performance of the $15,000.00 Steadidrone at a fraction of the cost.
+   -  A similar practical lifting capability and nearly 40 minute useful flight times should be achievable even with 18" Propellers.
+   -  And given the extreme over design and ruggedness of the motors, similar reliability and longevity could also be expected.
+   -  This is the motor I will be using in my next Quadcopter and I will allow for up to 18" propellers.
 
 .. image:: ../images/KDE_4014XF-380KV_Motor_1.jpg
     :target: ../_images/KDE_4014XF-380KV_Motor_1.jpg
@@ -393,14 +380,10 @@ A Hyper Efficient Medium Small Professional Grade Motor For Long Endurance
    is ideal for long flight time applications.
 -  This is the only motor in this size that can get G/W efficiencies
    over 17 at 50 percent throttle.
--  If you want to build a 4-8 pound copter for maximum endurance this is
-   the motor to use with a 4 cell LiPo.
--  Because of it's extremely high efficiency in it's hover range it is
-   also a candidate for high efficiency lithium batteries.
--  Panasonic or LG's high power Lithium batteries have about twice the
-   energy density of the LiPos we normally use.
--  But maximum discharge is only 2C so low current draw is required, the
-   high efficiency of these motors can provide that.
+-  If you want to build a 4-8 pound copter for maximum endurance this is the motor to use with a 4 cell LiPo.
+-  Because of it's extremely high efficiency in it's hover range it is also a candidate for high efficiency lithium batteries.
+-  Panasonic or LG's high power Lithium batteries have about twice the energy density of the LiPos we normally use.
+-  But maximum discharge is only 2C so low current draw is required, the high efficiency of these motors can provide that.
 -  Carbon fiber 14" to 16" propellers will be required.
 
 Professional Grade Power System for Small Quadcopters (10" - 14" Propellers)
@@ -409,19 +392,13 @@ Professional Grade Power System for Small Quadcopters (10" - 14" Propellers)
 -  The largest market segment is for Quadcopters in frame sizes that use
    10 to 14 inch propellers and weigh 3 to 7 pounds.
 
-   -  The `650 KV T-Motor MT3506 <http://www.rctigermotor.com/html/2013/Professional_0912/49.html>`__
-      at $65.00 is a high quality small but powerful pancake that can
-      turn props from 11" to 14" diameter.
-   -  With a 3 cell LiPo battery and T-Motor 14" prop at $73.00 a pair
-      it can lift up to 7 pounds and achieve very good endurance.
-   -  Add 4 T-Motor 18 Amp ESCs at $27.00 @ four each = $514.00 for top
-      quality motors, props and ESCs.
-   -  This small pancake motor can achieve good efficiency with 3S 11.1
-      volt or 4S 14.8 volt LiPo batteries and an appropriate sized prop.
-   -  The frame should be sized to accept up to 14" propellers and
-      various battery configurations.
-   -  It should be configurable to achieve 20+ minute flight times with
-      a GoPro size camera and brushless gimbal plus FPV or telemetry.
+   -  The `650 KV T-Motor MT3506 <http://www.rctigermotor.com/html/2013/Professional_0912/49.html>`__ 
+      at $65.00 is a high quality small but powerful pancake that can turn props from 11" to 14" diameter.
+   -  With a 3 cell LiPo battery and T-Motor 14" prop at $73.00 a pair it can lift up to 7 pounds and achieve very good endurance.
+   -  Add 4 T-Motor 18 Amp ESCs at $27.00 @ four each = $514.00 for top quality motors, props and ESCs.
+   -  This small pancake motor can achieve good efficiency with 3S 11.1 volt or 4S 14.8 volt LiPo batteries and an appropriate sized prop.
+   -  The frame should be sized to accept up to 14" propellers and various battery configurations.
+   -  It should be configurable to achieve 20+ minute flight times with a GoPro size camera and brushless gimbal plus FPV or telemetry.
    -  This would still be a very capable and rugged Quadcopter capable
       of professional results and reliability.
 
@@ -461,18 +438,12 @@ Consumer Grade Power System for Medium Quadcopters (15" - 16" Propellers)
 .. image:: ../images/propellors_841.jpg
     :target: ../_images/propellors_841.jpg
 
--  The Sunnysky Combo will cost about $260.00 and work very efficiently
-   for copters up to about ten pounds.
--  The RCTimer Combo will cost about $150.00 and will provide extended
-   flight time for copters up to about 6 pounds.
--  These motors will both actually support up to 17" propellers and work
-   with 3 to 6 cell LiPo batteries.
--  You could still design a copter that would get 30 minute flight times
-   while carrying a GoPro and gimbal if desired.
--  The frame for either of these motors should be designed to support at
-   least 16" prop diameter and 17" would be better.
--  These will not last as long nor be as reliable as the previous
-   T-Motor configurations but will still deliver lots of solid use.
+-  The Sunnysky Combo will cost about $260.00 and work very efficiently for copters up to about ten pounds.
+-  The RCTimer Combo will cost about $150.00 and will provide extended flight time for copters up to about 6 pounds.
+-  These motors will both actually support up to 17" propellers and work with 3 to 6 cell LiPo batteries.
+-  You could still design a copter that would get 30 minute flight times while carrying a GoPro and gimbal if desired.
+-  The frame for either of these motors should be designed to support at least 16" prop diameter and 17" would be better.
+-  These will not last as long nor be as reliable as the previous T-Motor configurations but will still deliver lots of solid use.
 
 
 Consumer Grade Power System for Small Quadcopters (8" - 12" Propellers)
@@ -482,11 +453,11 @@ Consumer Grade Power System for Small Quadcopters (8" - 12" Propellers)
    or even semi-pro sub 5 pound Quadcopters.
 
    -  The `DJI 2212 Motors <http://www.ebay.com/itm/like/231128616387?lpid=82>`__
-      provided with their low cost ARF Flamewheel Quadcopters are
-      unusually durable and cost $24.00 each.
-   -  And DJI's specially hubbed 10" plastic props at $8.00 a pair are
-      well balanced, efficient and
-      rugged.\ |dji-motor01| 
+      provided with their low cost ARF Flamewheel Quadcopters are unusually durable and cost $24.00 each.
+   -  And DJI's specially hubbed 10" plastic props at $8.00 a pair are well balanced, efficient and rugged.
+      
+      .. image:: ../images/dji-motor01.jpg
+          :target: ../_images/dji-motor01.jpg
       
       .. image:: ../images/DJI-PROP-1038-2.jpg
           :target: ../_images/DJI-PROP-1038-2.jpg|DJI-PROP-1038-2|
@@ -495,52 +466,40 @@ Consumer Grade Power System for Small Quadcopters (8" - 12" Propellers)
 -  And this easy to use $40.00 four in one ESC eliminates a power
    distribution board, reduces EMF and provides good reliability.
 
-.. image:: ../../../images/3281_dimg2.jpg
-    :target: ../_images/3281_dimg2.jpg
+   .. image:: ../../../images/3281_dimg2.jpg
+       :target: ../_images/3281_dimg2.jpg
 
 
 -  For $150.00 you can actually get quite a useful and durable power
    system for a smaller sub five pound quadcopter.
 
 
-The $40.00 SunnySky X4108S pancake motor is also capable of being used
-on Quadcopters lifting up to 10 pounds.
+The $40.00 SunnySky X4108S pancake motor is also capable of being used on Quadcopters lifting up to 10 pounds.
 
--  It is well regarded, efficient and durable and is suitable for use
-   with 14" or 15" propellers and 4 cell to 6 cell LiPo batteries.
+-  It is well regarded, efficient and durable and is suitable for use with 14" or 15" propellers and 4 cell to 6 cell LiPo batteries.
 
 .. image:: ../images/sunnysky_x4108S-11_motor.jpg
     :target: ../_images/sunnysky_x4108S-11_motor.jpg
 
 -  Clearly these are not the only alternatives.
 
-   -  If you want to use your copter for constant, professional use you
-      will want something like the first 3 configurations.
-   -  For occasional, hobby or non-critical use for flying, FPV and / or
-      personal video or photography the others should be OK.
-   -  The KDE and Pro T-Motors bearings will last longer and are more
-      weather proof and reliable than the less expensive alternatives.
-   -  And the more expensive Carbon Fiber props are more efficient,
-      better balanced and more durable than cheaper alternatives.
-   -  But properly installed on an appropriate copter the less expensive
-      alternatives listed can provide many reliable hours of flying.
-   -  I have favored slow speed pancake motors because efficiency and
-      flight time benefit from the larger propellers they can use.
+   -  If you want to use your copter for constant, professional use you will want something like the first 3 configurations.
+   -  For occasional, hobby or non-critical use for flying, FPV and / or personal video or photography the others should be OK.
+   -  The KDE and Pro T-Motors bearings will last longer and are more weather proof and reliable than the less expensive alternatives.
+   -  And the more expensive Carbon Fiber props are more efficient, better balanced and more durable than cheaper alternatives.
+   -  But properly installed on an appropriate copter the less expensive alternatives listed can provide many reliable hours of flying.
+   -  I have favored slow speed pancake motors because efficiency and flight time benefit from the larger propellers they can use.
 
--  The above illustrates just some of the possibilities in identifying
-   an appropriate power system for your project.
+-  The above illustrates just some of the possibilities in identifying an appropriate power system for your project.
 
 The MultiCopter Frame
 =====================
 
-There are many types of frames and it is most important to put together
-a frame that is appropriate for your use.
+There are many types of frames and it is most important to put together a frame that is appropriate for your use.
 
--  There are a lot of Multicopter frame types and many are available as
-   bare frame kits or Almost Ready To Fly or Ready To Fly copters.
+-  There are a lot of Multicopter frame types and many are available as bare frame kits or Almost Ready To Fly or Ready To Fly copters.
 
-   -  Most professional grade Multicopters are made from fiberglass and
-      carbon fiber cut tubing and plate.
+   -  Most professional grade Multicopters are made from fiberglass and carbon fiber cut tubing and plate.
 
       -  Carbon fiber is very strong, but is also brittle and can
          shatter on impact, it is also hard to machine and to glue to.
@@ -719,15 +678,15 @@ it is strong and light and easily manufactured.
 -  There are a wide variety of Carbon fiber and epoxy fiberglass
    components to choose from.
 
-   -  Carbon fiber products are available from \ `RockWest Composites <http://www.rockwestcomposites.com/>`__ and `Carbon Fiber Tube Shop <http://www.carbonfibertubeshop.com>`__\ and \ `Dragon Plate <http://dragonplate.com/default.asp>`__
+   -  Carbon fiber products are available from \ `RockWest Composites <https://www.rockwestcomposites.com/>`__ and `Carbon Fiber Tube Shop <http://www.carbonfibertubeshop.com>`__\ and \ `Dragon Plate <https://dragonplate.com/>`__
    -  A really good article on cutting and gluing carbon fiber products
       from \ `Carbon Fiber Tube Shop <http://www.carbonfibertubeshop.com/cut%20&%20bond.html>`__
    -  Fiberglass and Carbon Fiber products are available from: `CST Sales <http://www.cstsales.com/products.html>`__ and `ACP Sales <http://www.acpsales.com/Carbon-Fiber.html>`__
-   -  A datasheet for `3M 2216 Epoxy Glue <http://multimedia.3m.com/mws/mediawebserver?6666660Zjcf6lVs6EVs666GGfCOrrrrQ->`__
+   -  A datasheet for `3M 2216 Epoxy Glue <http://multimedia.3m.com/mws/media/153955O/3mtm-scotch-weldtm-epoxy-adhesive-2216-b-a.pdf>`__
       and a source for it
-      `Amazon <http://www.amazon.com/3M-Scotch-Weld-Epoxy-Adhesive-EC-2216/dp/B000WXL090/ref=sr_1_2?ie=UTF8&qid=1392508104&sr=8-2&keywords=3m+2216>`__
+      `Amazon <https://www.amazon.com/3M-Scotch-Weld-Epoxy-Adhesive-EC-2216/dp/B000WXL090/>`__
    -  A datasheet for Loctite 9430 Glue and a source for Loctite
-      9340 \ `Amazon <http://www.amazon.com/Loctite-9340%C3%A2-Hysol-Adhesive-Temperature/dp/B000WXL1YE/ref=sr_1_1?s=industrial&ie=UTF8&qid=1392508821&sr=1-1&keywords=loctite+9340>`__
+      9340 \ `Amazon <https://www.amazon.com/Loctite-9340%C3%A2-Hysol-Adhesive-Temperature/dp/B000WXL1YE/>`__
 
 
 Using manufactured Plastic and Fiberglass Components in Your Own Frames.
@@ -908,7 +867,7 @@ A Small Quadcopter Optimised to Use High Efficiency Lithium Batteries
    current.
 -  This quadcopter design uses carefully selected T-Motor MT2206 1200 KV
    30 gram motors and 10" props with a light carbon fiber frame.
--  It includes a 2S 2P 6600mah lithium battery, flight controller,
+-  It includes a 2S 2P 6600mah lithium battery, autopilot,
    receiver and even an FPV camera and transmitter.
 -  It weighs about a pound and since the battery is 2 parallel it can
    provide 13.2 amps of current (max current is less than 10 amps.)
@@ -926,7 +885,7 @@ Links To Specific MultiCopter Builds
 ====================================
 
 -  Here is a link to Forrest Franz's build of a very simple, very light
-   weight, very strong \ `carbon fiber Quadcopter frame <http://diydrones.com/forum/topics/build-your-own-copter-part-iii?xg_source=activity>`__
+   weight, very strong \ `carbon fiber Quadcopter frame <https://diydrones.com/forum/topics/build-your-own-copter-part-iii?xg_source=activity>`__
 
 .. image:: ../images/QuadMartyFitTest.jpg
     :target: ../_images/QuadMartyFitTest.jpg
@@ -934,13 +893,13 @@ Links To Specific MultiCopter Builds
 -  And some links to some of Forrests extremely ambitious copter
    building techniques and concepts.
 
-   -  `building-copters-with-round-tubes-stronger-lighter-easier <http://diydrones.com/group/arducopterusergroup/forum/topics/building-copters-with-round-tubes-stronger-lighter-easier-to>`__
-   -  `build-your-own-copter-part-ii <http://diydrones.com/forum/topics/build-your-own-copter-part-ii>`__
-   -  `build-your-own-copter-part-iii <http://diydrones.com/forum/topics/build-your-own-copter-part-iii>`__
-   -  `build-your-own-copter-part-iv <http://diydrones.com/forum/topics/build-your-own-copter-part-iv>`__
+   -  `building-copters-with-round-tubes-stronger-lighter-easier <https://diydrones.com/forum/topics/building-copters-with-round-tubes-stronger-lighter-easier-to?groupUrl=arducopterusergroup&>`__
+   -  `build-your-own-copter-part-ii <https://diydrones.com/forum/topics/build-your-own-copter-part-ii>`__
+   -  `build-your-own-copter-part-iii <https://diydrones.com/forum/topics/build-your-own-copter-part-iii>`__
+   -  `build-your-own-copter-part-iv <https://diydrones.com/forum/topics/build-your-own-copter-part-iv>`__
 
 -  And here is a link to Luke Cook's very serious, very well thought out
-   and meticulously executed \ `OctoCopter Build <http://diydrones.com/profiles/blogs/octocopter-scratch-build>`__
+   and meticulously executed \ `OctoCopter Build <https://diydrones.com/profiles/blogs/octocopter-scratch-build>`__
 
    .. image:: ../images/octocopter_luke_cook.jpg
        :target: ../_images/octocopter_luke_cook.jpg
@@ -1034,18 +993,13 @@ Conclusion and Additional Design Considerations
       frame arm but then there are frame design and clearance issues.
 
 -  Try to keep the weight centralized as much as possible and keep the
-   flight controller near the horizontal center if possible.
+   autopilot near the horizontal center if possible.
 
    -  So that the copter tends to roll and pitch as though pivoting
-      around the center of mass and around the flight controller.
+      around the center of mass and around the autopilot.
    -  However it is not as critical as some people have made it out to
       be because the stabilizing throttles will automatically
       compensate.
 
 -  You can do a lot with a rudimentary understanding of the forces
    involved, if you need more it is a career, not a hobby.
-
-
-
-.. |dji-motor01| image:: ../images/dji-motor01.jpg
-    :target: ../_images/dji-motor01.jpg

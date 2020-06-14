@@ -1,8 +1,8 @@
 .. _code-overview-adding-a-new-parameter:
 
-======================================
-Adding a New Parameter (Code Overview)
-======================================
+================================
+Adding a New Parameter to Copter
+================================
 
 Parameters can either be part of the main code or part of a library.
 
@@ -135,7 +135,7 @@ use the `AP_Compass <https://github.com/ArduPilot/ardupilot/tree/master/librarie
 library as an example.
 
 **Step #1:** Add the new class variable to the top level .h file (i.e.
-`Compass.h <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Compass/Compass.h>`__). 
+`Compass.h <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Compass/AP_Compass.h>`__).
 Possible types include AP_Int8, AP_Int16, AP_Float, AP_Int32 and
 AP_Vector3f.  Also add the default value you'd like for the parameter
 (we will use this in step #2)
@@ -168,7 +168,7 @@ AP_Vector3f.  Also add the default value you'd like for the parameter
     };
 
 **Step #2:**\ Add the variable to the var_info table in the .cpp file
-(i.e. `Compass.cpp <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Compass/Compass.cpp>`__)
+(i.e. `Compass.cpp <https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Compass/AP_Compass.cpp>`__)
 including @Param ~ @Increment comments to allow the GCS to display the
 description to the user and to control the min and max values set from
 the ground station.  When adding the new parameter be careful that:
@@ -181,7 +181,7 @@ the ground station.  When adding the new parameter be careful that:
 
 ::
 
-    const AP_Param::GroupInfo Compass::var_info[] PROGMEM = {
+    const AP_Param::GroupInfo Compass::var_info[] = {
         // index 0 was used for the old orientation matrix
 
         // @Param: OFS_X
@@ -214,7 +214,13 @@ so it cannot be access from outside the class.  If we'd made it public
 then it would have been accessible to the main code as well as
 "compass._my_new_lib_parameter".
 
-**Step #3:** If the class is a completely new addition to the code (as
+**Step #3:** Add a declaration for var_info to the public section of the .h file of new library class in addition to the definition in the .cpp file:
+
+::
+
+    static const struct AP_Param::GroupInfo var_info[];
+
+**Step #4:** If the class is a completely new addition to the code (as
 opposed to an existing class like AP_Compass), it should be added to
 the main vehicle's var_info table in the
 `Parameters.cpp <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Parameters.cpp>`__
@@ -223,12 +229,12 @@ where the Compass class appears.
 
 ::
 
-    const AP_Param::Info var_info[] PROGMEM = {
-        // @Param: SYSID_SW_MREV
+    const AP_Param::Info var_info[] = {
+        // @Param: FORMAT_VERSION
         // @DisplayName: Eeprom format version number
         // @Description: This value is incremented when changes are made to the eeprom format
         // @User: Advanced
-        GSCALAR(format_version, "SYSID_SW_MREV",   0),
+        GSCALAR(format_version, "FORMAT_VERSION",   0),
     <snip>
 
         // @Group: COMPASS_
@@ -242,3 +248,26 @@ where the Compass class appears.
 
         AP_VAREND
     };
+
+**Step #5:**
+If the class is a completely new addition to the code, also add k_param_my_new_lib to the enum in `Parameters.h <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Parameters.h>`__, where my_new_lib is the first argument to the GOBJECT declaration in `Parameters.cpp <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Parameters.cpp>`__. Read the comments above the enum to understand where to place the new value, as order is important here.
+
+
+Changing the type of a parameter
+================================
+
+From time to time parameters need to be altered or renamed. ArduPilot has capabilities that allow this to be managed from release to release so that upgrades always preserve user configured parameters. Parameters are keyed off slots in the eeprom, so if the occupied slot does not change then the parameter does not change - regardless of its name. If however the type needs to change then the parameter needs to be moved to a new slot and the existing slot be reserved to prevent unexpected configuration. In order for the configuration to be preserved it needs to be copied and converted from the old slot to the new slot.
+
+**Step #1:** Change the index of the existing parameter to an unused index and add a comment to the effect that the old slot is reserved.
+
+**Step #2:** In order to figure out the keys for conversion:
+
+    * Set the AP_PARAM_KEY_DUMP definition to "1" [here in AP_Param.h](https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Param/AP_Param.h#L36)
+
+    * Change the delay here from 1ms to 2ms [here in AP_Param::show_all](https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Param/AP_Param.cpp#L2414)
+
+    * Remove the #if / #endif from [here in Copter's system.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/system.cpp#L262)
+
+    * Start the old code in SITL and all the parameter names and their magic numbers will be displayed
+
+    * Copy-paste from Copter's Parameters.cpp file's [existing parameter conversion tables like the ones done for the attitude controller's filters](https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Parameters.cpp#L1219).

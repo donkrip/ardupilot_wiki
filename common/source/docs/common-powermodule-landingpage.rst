@@ -1,45 +1,29 @@
 .. _common-powermodule-landingpage:
 
-============================
-Power Modules (landing page)
-============================
+=============================================
+Battery Monitors (aka Power Monitors/Modules)
+=============================================
 
-If possible it is best to power your Pixhawk, PX4 or APM flight
-controller with a :ref:`3DR power module <common-3dr-power-module>` to
-reduce the chances of a brownout.  The links below have information
-about these modules and other alternatives.
+.. image:: ../../../images/PowerModule_landingpage.jpg
 
+The links below have information about the most commonly used power monitors/modules
+
+.. note:: In firmware versions 4.0 and later, up to 10 batteries can be monitored. In addition, a new battery "type" = SUM, that consolidates all following (higher numbered) battery monitors into a single report, has been added to each monitor.
 
 .. toctree::
     :maxdepth: 1
 
-[site wiki="copter"]
-    Smart Battery <smart-battery>
-[/site]
-
-    AttoPilot Current Sensor <common-using-a-current-sensor>
-    Mauch Power Modules <common-mauch-power-modules>
+    Power Monitor Configuration <common-power-module-configuration-in-mission-planner>
+    Common Power Module <common-3dr-power-module>
     AirbotPower Power Module <common-airbotpower-power-module>
-    3DR Power Module <common-3dr-power-module>
-    Power Module Configuration <common-power-module-configuration-in-mission-planner>
+    Mauch Power Monitor <common-mauch-power-modules>
+    Smart Batteries <common-smart-battery>
+    Fuel Monitors <common-fuel-sensors>
+    Can PMU<common-can-pmu>
+    HV PM<common-hv-pm>
 
+Power modules provide these benefits:
 
-
-.. image:: ../../../images/PowerModule_landingpage.jpg
-    :target: ../_images/PowerModule_landingpage.jpg
-
-.. image:: ../../../images/mauch_power_module.jpg
-    :target: ../_images/mauch_power_module.jpg
-
-.. image:: ../../../images/AirbotPower_PowerModule_Back.jpg
-    :target: ../_images/AirbotPower_PowerModule_Back.jpg
-
-[site wiki="copter"]
-The smart battery is for Solo only:
-
--  :ref:`Smart Battery <copter:smart-battery>`
-
-.. image:: ../../../images/SmartBattery_Solo.jpg
-    :target:  https://store.3dr.com/products/solo-smart-battery
-[/site]
-
+- Provides a stable power supply to the autopilot and reduces the chance of a brown-out
+- Allows real-time monitoring of the battery’s voltage and current and triggering a low battery failsafe
+- Allows compensating for the interference on the compass from the motors using the COMPASS_MOT_x and COMPASS_PMOT_x parameters, see :ref:`common-compass-setup-advanced` .

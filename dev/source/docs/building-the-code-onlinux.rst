@@ -1,8 +1,14 @@
 .. _building-the-code-onlinux:
 
-================================================
-Building ArduPilot for APM2.x on Linux with Make
-================================================
+==========================================================
+Archived: Building ArduPilot for APM2.x on Linux with Make
+==========================================================
+
+.. warning::
+
+   **ARCHIVED ARTICLE**
+
+   ArduPilot no longer supports make, Arduino or AVR.
 
 Quick start
 ===========
@@ -25,14 +31,13 @@ Clone the source:
 
     git clone https://github.com/ArduPilot/ardupilot.git
     cd ardupilot
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
 
 Run the install-prereqs-ubuntu.sh script:
 
 ::
 
-    ardupilot/Tools/scripts/install-prereqs-ubuntu.sh -y
+    ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
 Reload the path (log-out and log-in to make permanent):
 
@@ -61,7 +66,7 @@ Build for Rover:
 
 ::
 
-    cd ardupilot/APMrover2
+    cd ardupilot/Rover
     make
 
 Build for Antenna Tracker:
@@ -105,14 +110,9 @@ The following packages are required to build ardupilot for the APM1/APM2
     gawk make git arduino-core g++
 
 To build ardupilot for the PX4 platform, you'll first need to install
-the PX4 toolchain and download the PX4 source code. See the `PX4 toolchain installation page <https://pixhawk.ethz.ch/px4/dev/toolchain_installation_lin>`__.
+the PX4 toolchain and download the PX4 source code.
 
-The easiest way to install all these prerequisites is to run the
-**ardupilot/Tools/scripts/install-prereqs-ubuntu.sh** script, which will
-
-install all the required packages and download all the required
-
-software.
+The easiest way to install all these prerequisites is to run the **ardupilot/Tools/scripts/install-prereqs-ubuntu.sh** script, which will install all the required packages and download all the required software.
 
 Building using make
 -------------------
@@ -125,7 +125,7 @@ the top level of the repository. You can set some defaults in
 
 2. In the sketch directory, type ``make`` to build for APM2.
 Alternatively, ``make apm1`` will build for the APM1 and \`make px4\`
-will build for the PX4. The binaries will generated in
+will build for the Pixhawk. The binaries will generated in
 \`/tmp/\ *sketchname*.build\`.
 
 3. Type \`make upload\` to upload. You may need to set the correct

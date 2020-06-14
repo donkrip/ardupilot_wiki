@@ -4,64 +4,53 @@
 External LEDs
 =============
 
-This article shows how to connect external LEDs.
+An external LED or LED Display can be added by connecting it to the autopilot's
+I2C port or, in 4.0 and later versions, if a serially programmed device, via an output using the SERVOx_FUNCTION for that output. UAVCAN LEDs on the CANBUS are also supported (See :ref:`UAVCAN Setup <common-uavcan-setup-advanced>` ).
 
-External LED for Pixhawk
-========================
+.. note:: Note that the same grouping restrictions which apply to setting outputs to different PWM rates and/or DShot, apply to LEDs also since the timer associated with each group of outputs cannot be used for different rates. See also  :ref:`common-dshot` 
 
-An external Pixhawk LED can be added by connecting it to the Pixhawk's
-I2C port. Because most users use an `Ublox GPS and Compass module <https://store.3dr.com/products/3dr-gps-ublox-with-compass>`__,
-an `I2C splitter <http://store.jdrones.com/Pixhawk_I2C_splitter_p/dstpx4i2c01.htm>`__
-is recommended.  Once connected the similar LED on the center of the
-Pixhawk will no longer light up.
+RGB LEDs/Displays with I2C Connection
+=====================================
+
+Two types of I2C devices are supported: IC2 connected RGB LEDS using an LED driver chip and OLED displays.
+
+RGB LEDs/drivers supported are:
+
+- Toshiba LEDs (no longer manufactured)
+- PCA9685 driver
+- NCP5623 driver
+
+OLED Displays supported are SSH1106 and SSD1306 with 128x64 pixel displays. See :ref:`common-display-onboard` for more information.
+
+.. image:: ../../../images/ssh1106.jpg
+    :width: 450px
+
+
+Because most users use an external :ref:`GPS and Compass module <common-positioning-landing-page>`, an I2C splitter is recommended, such as shown below. The :ref:`NTF_LED_TYPES<NTF_LED_TYPES>` parameter should be set to the controller type used.
 
 .. image:: ../../../images/ExternalLED_PixhawkLED.jpg
     :target: ../_images/ExternalLED_PixhawkLED.jpg
 
-[site wiki="copter" heading="off"]
+Serially Connected Devices
+==========================
 
-Two External LED solutions for APM2 (Copter only)
-=================================================
+Currently, Ardupilot supports Neopixel and ProfiLED RGB LED strings. They can be used for NTF notifications from the autopilot on status and warnings like other RGB LEDs, or be programmed in unlimited ways using LUA scripts on the autopilot's SD card. For use with scripting the output function must be set to a scripting output function (94 - 109) the script then assignees this output to LEDs. See :ref:`common-lua-scripts` for more use examples using LUA scripts.
 
-There are two recommended solutions for adding LEDs.
+..  youtube:: ytW538e_cQw
 
--  the `JDrones I/O board <http://store.jdrones.com/jD_IOBoard_p/jdioboard11.htm>`__
-   (`video here <https://www.youtube.com/watch?feature=player_embedded&v=Q2oT808mJnQ>`__)
-   and `LED strips <http://store.jdrones.com/Night_Flying_LED_Drivers_s/94.htm>`__
-   listens to the mavlink messages on the APM/PX4's telemetry port (much
-   like the :ref:`minimOSD <common-minim-osd-quick-installation-guide>`) 
-   and updates the LEDs.  The board includes a voltage regulator so it
-   takes power directly from the battery
--  the APM's A4 ~ A11 pins can be used to control LEDs directly.  `This is an example of a community members solution <http://diydrones.com/forum/topics/apm-2-x-led-buzzer-modules>`__
-   you can purchase or you can build your own by purchasing a Darlington
-   Driver DIP chip (`like this one from Sparkfun <https://www.sparkfun.com/products/312>`__) to allow you to
-   power the LEDs from the battery.  See this `blog post <http://diydrones.com/profiles/blogs/adding-external-led-indicators-and-a-piezo-beeper-for-arm-and-gps>`__
-   for more details.
+Serial LEDs require a whole pwm group, more information about your flight controllers PWM groups can be found on it's :ref:`hardware page<common-autopilots>`. To check that the desired outputs have been setup correctly look for the PWM types message in your GCS's messages tab. See :ref:`common-gpios`
 
-.. image:: ../../../images/leds01.jpg
-    :target: ../_images/leds01.jpg
+.. toctree::
+    :maxdepth: 1
 
-If you choose to control the pins directly from the APM, you must choose
-LEDs which have a current draw lower than the maximum permissible
-current of the AVR chip on the APM: 40mA.
+    NeoPixel <common-serial-led-neopixel>
+    ProfiLED <common-serial-led-ProfiLED>
 
-For **AC3.1.5**, the pinout of the APM is as follows:
+.. note:: Be sure the output is configures as normal PWM instead of a GPIO output. Flight controllers with a IOMCU can only use the AUX outputs for connecting serial LEDs. To check that the desired outputs have been setup correctly look for the PWM types message in your GCS's messages tab. See :ref:`common-gpios`
 
--  A4 : AUX led
--  A5 : Beeper - can drive a piezo buzzer directly (see below)
--  A6 : GPS - will flash with no GPS lock, solid with GPS lock
--  A7 ~ A11 : Motor LEDs
+NTF LED Meaning
+===============
 
-Which LEDs are active and when they blink is somewhat configurable
-through the LED_MODE parameter which can be set from the Mission
-Planner's CONFIG/TUNING > Standard Params > Copter LED Mode drop down.
+The meaning of the colors and flash patterns are shown in :ref:`common-leds-pixhawk` if the ``standard`` default protocol is set for :ref:`NTF_LED_OVERRIDE<NTF_LED_OVERRIDE>`. 
 
-For **AC3.2**, the LED_MODE parameter is removed but all the following
-reduced set of pins are always active:
-
--  A4 : Motor LED
--  A5 : Beeper - can drive a piezo buzzer directly (see below)
--  A6 : GPS - will flash with no GPS lock, solid with GPS lock
--  A7: Arming LED
-
-[/site]
+The brightness and number of LEDs can be controlled by modifying the :ref:`NTF_LED_BRIGHT <NTF_LED_BRIGHT>` and :ref:`NTF_LED_LEN <NTF_LED_LEN>`

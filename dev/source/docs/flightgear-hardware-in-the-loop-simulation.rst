@@ -24,12 +24,12 @@ Things you need
 
 #. `Flightgear <http://www.flightgear.org/>`__ (tested Flight Gear v2.x,
    currently at v3.4)
-#. `Mission Planner <http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi>`__
+#. `Mission Planner <https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi>`__
    (Windows)
 #. ArduPilot HIL on your APM (via APM Planner, currently (April 2013)
    only v2.68 HIL works, see below)
-#. `Mavlink.xml <https://ardupilot-mega.googlecode.com/svn/Tools/trunk/FlightGear/MAVLink.xml>`__ data
-   format file for flightgear (Right Click and Save as)
+#. `Mavlink.xml <https://github.com/dronekit/ardupilot-releases/blob/master/Tools/FlightGear/MAVLink.xml>`__ data
+   format file for flightgear
 #. Recommended for Windows OS: the
    file: \ `system.fgfsrc <https://code.google.com/p/ardupilot-mega/downloads/detail?name=system.fgfsrc>`__ placed
    into the "C:\\Program Files (x86)\\FlightGear\\data" folder. This
@@ -74,7 +74,7 @@ How to make it work
 .. note::
 
    If you used the file
-   "`system.fgfsrc <http://firmware.ardupilot.org/downloads/wiki/advanced_user_tools/windows_parameter_file_for_flightgear_HIL_simulator_system.fgfsrc.zip>`__\ "
+   "`system.fgfsrc <https://download.ardupilot.org/downloads/wiki/advanced_user_tools/windows_parameter_file_for_flightgear_HIL_simulator_system.fgfsrc.zip>`__\ "
    then you can just increase your throttle to fly the Rascal plane. If you
    didn't and are flying the default Cessna, hold down 's' on the keyboard
    to start the plane's engine, then advance your throttle to take

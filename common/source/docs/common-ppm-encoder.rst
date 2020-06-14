@@ -64,7 +64,7 @@ Failsafe output values:
 Setup Manual
 ============
 
-The `PPM Encoder Manual <http://download.ardupilot.org/downloads/wiki/pdf_guides/PPM-Encoder-V3-Manual.pdf>`__
+The `PPM Encoder Manual <https://download.ardupilot.org/downloads/wiki/pdf_guides/PPM-Encoder-V3-Manual.pdf>`__
 shows how to solder and wire the PPM Encoder and explains the different
 failsafe modes.
 
@@ -90,6 +90,14 @@ ArduPPM_Vx.x.xx_ATMega328p.hex. The official source code is in the Git
 repository:
 https://github.com/ArduPilot/ardupilot/tree/master/Tools/ArduPPM. The
 standalone PPM Encoder needs the ATMega328p version.
+
+Compiled binaries can be downloaded from our download site:
+
+- `ArduCopter PPM Encoder v2.3.16 Standalone <https://ardupilot.org/plane/docs/common-downloads_advanced_user_tools.html#arduppm-v2-3-16-atmega328p-firmware-for-apm1-x-copter-and-standalone-ppm-encoder>`__
+
+- `ArduPlane PPM Encoder v2.3.16 Standalone <https://ardupilot.org/plane/docs/common-downloads_advanced_user_tools.html#arduppm-v2-3-16-atmega328p-firmware-for-apm1-x-plane-and-standalone-ppm-encoder>`__
+
+
 
 To flash, connect the PPM Encoder to an AVR programmer such as the
 AVRISP mkII:

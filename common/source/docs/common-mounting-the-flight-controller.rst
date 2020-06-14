@@ -1,16 +1,16 @@
 .. _common-mounting-the-flight-controller:
 
 ==============================
-Mounting the Flight Controller
+Mounting the Autopilot
 ==============================
 
-This article explains how to mount the flight controller in standard and
+This article explains how to mount the autopilot in standard and
 alternative orientations.
 
 Standard orientation
 ====================
 
-The :ref:`Autopilot board <common-autopilots>` (Pixhawk etc.) should be
+The :ref:`autopilot <common-autopilots>` (Pixhawk etc.) should be
 housed within a case (which includes foam over the barometer) and should
 be mounted with the white arrow pointing directly towards the front of
 the vehicle.
@@ -22,9 +22,13 @@ motors.  It is not critical that it is placed exactly at the middle but
 closer is better (there are no recorded cases of problems caused by the
 controller being far from the centre of gravity).
 
+[site wiki="rover"]
+.. image:: ../../../images/mounting-flight-controller-rover.png
+    :target: ../_images/mounting-flight-controller-rover.png
+[/site]
+
 The board should be attached to the frame using 4 cubes of vibration
-dampening foam approximately 3/4 inch square (3DR-supplied Pixhawk's
-come with foam cubes made by `3M <http://www.3m.com/>`__).
+dampening foam approximately 3/4 inch square (3M foam can be purchased from `mRobotics <https://store.mrobotics.io/product-p/mro-pxfoams-mr.htm>`__).
 
 .. image:: ../../../images/pixhawk-back-4-corners-foam.jpg
     :target: ../_images/pixhawk-back-4-corners-foam.jpg
@@ -39,7 +43,7 @@ come with foam cubes made by `3M <http://www.3m.com/>`__).
 Alternative orientations
 ========================
 
-If the standard orientation of the Pixhawk/APM2 is not convenient, it
+If the standard orientation of the Autopilot is not convenient, it
 can be mounted in over 30 other possible orientations.  The full list of
 possible orientations can be seen and set through the Mission Planner
 **Config/Tuning \| Advanced Params** screen, look for the
@@ -59,3 +63,6 @@ points off to the right).
 
 .. image:: ../../../images/MountingToFrame_MPBoardOrientation.png
     :target: ../_images/MountingToFrame_MPBoardOrientation.png
+
+.. warning:: If the board is mounted in a non-standard orientation (i.e. arrow is not pointing forward) then please ensure the :ref:`AHRS_ORIENTATION<AHRS_ORIENTATION>`  is properly set before doing the accelerometer calibration.
+

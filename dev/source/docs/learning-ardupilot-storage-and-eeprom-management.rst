@@ -1,8 +1,8 @@
 .. _learning-ardupilot-storage-and-eeprom-management:
 
-==================================================
-Learning ArduPilot - Storage and EEPROM management
-==================================================
+=============================
+Storage and EEPROM management
+=============================
 
 Every board that ArduPilot supports has some form of persistent storage
 available. This is used to hold user parameters, waypoints, rally
@@ -76,6 +76,8 @@ available storage into areas that provide:
 -  fence points
 -  waypoints
 -  rally points
+-  signing key
+-  RC bind info
 
 Go and have a read of
 `libraries/StorageManager/StorageManager.cpp <https://github.com/ArduPilot/ardupilot/blob/master/libraries/StorageManager/StorageManager.cpp>`__.

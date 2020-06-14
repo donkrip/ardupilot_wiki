@@ -4,8 +4,8 @@
 Copter Mission Command List
 ===========================
 
-This page provides details of all the mission commands (i.e. `MAVLink commands <https://pixhawk.ethz.ch/mavlink/>`__) supported by Copter that
-can be run as part of a mission (i.e. :ref:`AUTO flight mode <auto-mode>`).
+This page provides details of all the mission commands 
+(i.e. `MAVLink commands <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT>`__) supported by Copter that can be run as part of a mission (i.e. :ref:`AUTO flight mode <auto-mode>`).
 
 Each of the commands below is either a "Navigation" command or a "Do"
 command.  Navigation commands (i.e. "TakeOff" and "Waypoint") affect the
@@ -13,8 +13,8 @@ location of the vehicle while "Do" commands (i.e. "Do-Set-Servo" and
 "Do-Cam-Trigg-Dist") are for auxiliary functions and do not affect the
 vehicle's position.  During a mission at most one "Navigation" command
 and one "Do" command can be running at one time.  The "Do" commands will
-be run in order as soon as the preceeding navigation command before them
-starts.  For more information on setting up missions please refer to the
+be run in order as soon as the preceding navigation command before them
+completes.  For more information on setting up missions please refer to the
 :ref:`Planning a Mission with Waypoints and Events <common-planning-a-mission-with-waypoints-and-events>`
 page.
 
@@ -46,9 +46,9 @@ before proceeding to the next command
 
 **Hit Rad** - not supported - meant to hold the distance (in meters)
 from the target point that will qualify the waypoint as complete. This
-command is not supported. Instead the WPNAV_RADIUS parameter should be
+command is not supported. Instead the :ref:`WPNAV_RADIUS<WPNAV_RADIUS>` parameter should be
 used (see "WP Radius" field in above screen shot or adjust through the
-Standard Parameters List).  Even the WPNAV_RADIUS is only used when the
+Standard Parameters List).  Even the :ref:`WPNAV_RADIUS<WPNAV_RADIUS>` is only used when the
 waypoint has a Delay. With no delay specified the waypoint will be
 considered complete when the virtual point that the vehicle is chasing
 reaches the waypoint. This can be 10m (or more) ahead of the vehicle
@@ -71,13 +71,7 @@ Spline Waypoint
 .. image:: ../../../images/MissionList_SplineWaypoint.jpg
     :target: ../_images/MissionList_SplineWaypoint.jpg
 
-From AC3.2 (and higher),
-`Spline <https://en.wikipedia.org/wiki/Spline_%28mathematics%29>`__
-waypoints are supported.  The Spline commands take all the same
-arguments are regular waypoints (lat, lon, alt, delay) but when executed
-the vehicle will fly smooth paths (both vertically and horizontally)
-instead of straight lines.  Spline waypoints can be mixed with regular
-straight line waypoints as shown in the image above.
+`Spline <https://en.wikipedia.org/wiki/Spline_%28mathematics%29>`__ waypoints take all the same arguments as regular waypoints (lat, lon, alt, delay) but when executed the vehicle will fly smooth paths (both vertically and horizontally) instead of straight lines.  Spline waypoints can be mixed with regular straight line waypoints as shown in the image above.
 
 The Mission Planner shows the path the vehicle will take.  The image
 above shows some characteristics of the spline
@@ -89,21 +83,14 @@ above shows some characteristics of the spline
 -  Waypoint #5 is a straight line so the vehicle lines itself up to
    point towards waypoint #5 even before reaching waypoint #4.
 
-.. note::
-
-   As of AC3.2-rc4, there is a slight twitch as the vehicle passes
-   through each spline waypoint.  This is a technical issue that we hope to
-   resolve in an upcoming release.
-
 Loiter_Time
-~~~~~~~~~~~~
+~~~~~~~~~~~
 
 .. image:: ../../../images/MissionList_LoiterTime.png
     :target: ../_images/MissionList_LoiterTime.png
 
 The vehicle will fly to and then wait at the specified location for the
-specified number of seconds.  This is the mission equivalent of the
-:ref:`Loiter flight mode <loiter-mode>`.
+specified number of seconds.  This is the same as a Waypoint command.
 
 **Times** - the number of seconds to remain at the location.
 
@@ -114,14 +101,14 @@ will hold at the current location.
 will hold at the current altitude.
 
 Loiter_Turns
-~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 .. image:: ../../../images/MissionList_LoiterTurns.png
     :target: ../_images/MissionList_LoiterTurns.png
 
 The mission equivalent of the :ref:`Circle flight mode <circle-mode>`.  The vehicle will fly a circle around the
 specified lat, lon and altitude (in meters).  The radius of the circle
-is controlled by the CIRCLE_RADIUS parameter (i.e. cannot be set as
+is controlled by the :ref:`CIRCLE_RADIUS<CIRCLE_RADIUS>` parameter (i.e. cannot be set as
 part of the mission).
 
 **Turn** - the number of full rotations to complete around the point.
@@ -136,7 +123,7 @@ will circle around the current location.
 will circle at the current altitude.
 
 Loiter_Unlimited
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 .. image:: ../../../images/MissionList_LoiterUnlimited.png
     :target: ../_images/MissionList_LoiterUnlimited.png
@@ -158,7 +145,7 @@ Return-To-Launch
 
 Mission equivalent of the :ref:`RTL flight mode <rtl-mode>`.  As
 described on the RTL flight mode wiki page, the vehicle will first climb
-to the RTL_ALT parameter's specified altitude (default is 15m) before
+to the :ref:`RTL_ALT<RTL_ALT>` parameter's specified altitude (default is 15m) before
 returning home.  The home location is where the vehicle was last armed.
 
 This command takes no parameters and generally should be the last
@@ -193,6 +180,20 @@ This is a video made during the development of this feature.  Note in the video 
 ..  youtube:: 9VK3yjIyCSo
     :width: 100%
 
+Package Place
+~~~~~~~~~~~~~
+
+.. image:: ../../../images/MissionList_packageplace.png
+    :target: ../_images/MissionList_packageplace.png
+
+Support for Package Place was added in Copter-3.5.
+
+Vehicle flies to the specified location and descends until it senses (using motor output) that the package has reached the ground.  The gripper is then released to unload the package.
+The first column ("Max Desc") hold the maximum descent (in meters) that the vehicle should descend.  If the package has still not reached the ground despite this descent, the package will not be released and the vehicle will advance to the next mission command.
+
+..  youtube:: m4GK4ALqluc
+    :width: 100%
+
 .. _mission-command-list_do-set-roi:
 
 Do-Set-ROI
@@ -201,21 +202,9 @@ Do-Set-ROI
 .. image:: ../../../images/MissionList_DoSetRoi.jpg
     :target: ../_images/MissionList_DoSetRoi.jpg
 
-Points the nose of the vehicle and :ref:`camera gimbal <common-cameras-and-gimbals>` at the "region of
-interest".  In the example above the nose and camera would be pointed at
-the red marker.
+Points the nose of the vehicle or :ref:`camera gimbal <common-cameras-and-gimbals>` at the "region of interest".  In the example above the nose or camera would be pointed at the red marker.
 
-If using AC3.1.5: The nose would point at the marker for only the period
-that the vehicle is flying from Waypoint #1 to Waypoint #3.  If you
-wanted the nose/camera to continue to point at the red marker as it
-flies from #3 to #4, a second DO_SET_ROI command would need to be
-entered after Waypoint #3.
-
-If using AC3.2: The nose would continue to point at the red marker until
-the end of the mission.  To "clear" the do-set-roi and cause the vehicle
-to return to it's default behaviour (i.e. pointing at the next waypoint)
-a second DO_SET_ROI command should be placed later in the mission with
-all zero for Lat, Lon and Alt.
+The nose will continue to point at the red marker until the end of the mission OR "clear" the do-set-roi and cause the vehicle to return to its default behaviour (i.e. pointing at the next waypoint) by adding a second DO_SET_ROI command later in the mission with all zero for Lat, Lon and Alt.
 
 **Lat, Lon** - the latitude and longitude targets.
 
@@ -277,7 +266,7 @@ OR the change in heading (in degrees) when "rel/abs" field is "1"
 as the vehicle turns to the desired heading
 
 **Dir (1=CW, -1=CCW)** - Used only when relative heading is specified
-(i.e. "rel/abs" = "1") denotes whether the flight controller should add
+(i.e. "rel/abs" = "1") denotes whether the autopilot should add
 (CW) or subtract (CCW) the degrees (Deg) from the current heading to
 calculate the target heading. The vehicle will always turn in direction
 that most quickly gets it to the new target heading regardless if CW or
@@ -309,13 +298,7 @@ command.
 
 .. warning::
 
-   No more that three (3) Do-Jump commands can be used in a
-   mission, the fourth and subsequent Do-Jumps will be ignored.
-
-.. warning::
-
-   This command should not be used with ArduCotper 3.1.5 or
-   earlier (it works properly in AC3.2).
+   No more that fifteen (15) Do-Jump commands can be used in a mission.  Subsequent Do-Jumps will be ignored.
 
 Do-Change-Speed
 ~~~~~~~~~~~~~~~
@@ -327,14 +310,9 @@ Change the target horizontal speed (in meters/sec) of the vehicle.
 
 **speed m/s** - the desired maximum speed in meters/second.
 
-.. note::
+.. warning::
 
-   In AC3.1.5 (and earlier) versions the speed change will only take
-   effect after the current navigation command (i.e. waypoint command)
-   completes. From AC3.2 onwards the vehicle speed will change immediately.
-   Also note that in AC3.2 the speed parameter will be in the SECOND
-   COLUMN, not the first column as in previous releases as shown in the
-   screenshot above (this is to match the official MAVLINK protocol)
+   The speed parameter should be in the SECOND COLUMN, not the first column as shown in the screenshot above
 
 Do-Set-Home
 ~~~~~~~~~~~
@@ -342,15 +320,9 @@ Do-Set-Home
 .. image:: ../../../images/MissionList_DoSetHome.png
     :target: ../_images/MissionList_DoSetHome.png
 
-This command should not be used because of 
-`an issue found in AC3.2 <https://github.com/ArduPilot/ardupilot/issues/1677>`__. 
-Instead :ref:`Rally Points <common-rally-points>` can be used to
-control the position used for Return-To-Launch ("Home" is also used
-internally as the "origin" for all navigation calculations).
+This command should be avoided if possible and instead use :ref:`Rally Points <common-rally-points>` which can also control the position used for Return-To-Launch.
 
-**Current(1)/Spec(0)** - if "1" use the current location as the new
-home, if "0" use the specified Lat and Lon coordinate (not labelled
-yet!)
+**Current(1)/Spec(0)** - if "1" use the current location as the new home, if "0" use the specified Lat and Lon coordinate (not labelled yet!)
 
 **Lat, Lon** - the latitude and longitude targets.
 
@@ -366,17 +338,14 @@ the camera shutter to trigger after every 5m that the vehicle travels.
 
 **Dist (m)** - distance interval in meters.
 
-**Note: In AC3.1.5 (and earlier) versions this command cannot be
-shut-off. The camera will continue to be triggered repeatedly even after
-the mission has been ended. In AC3.2 (and higher) providing a distance
-of zero will stop the camera shutter from being triggered**
+To stop the camera from triggering, add a DO_SET_CAM_TRIGG_DIST later in the mission with Dist = 0
 
 .. _mission-command-list_do-set-relay:
 
 Do-Set-Relay
 ~~~~~~~~~~~~
 
-.. image:: ../images/MissionList_DoSetRelay.png
+.. image:: ../../../images/MissionList_DoSetRelay.png
     :target: ../_images/MissionList_DoSetRelay.png
 
 Set a :ref:`Relay <common-relay>` pin's voltage high or low.  The
@@ -428,7 +397,7 @@ Repeatedly move a :ref:`servo <common-servo>` back and forth between
 it's mid position and a specified PWM value. In the example above, the
 servo attached to output channel 8 would be moved to PWM 1700, then
 after 4 second, back to mid (default is 1500 which is held in the
-RC8_TRIM parameter), after another 4 seconds it would be moved to 1700
+:ref:`RC8_TRIM<RC8_TRIM>` parameter), after another 4 seconds it would be moved to 1700
 again, then finally after 4 more seconds it would be moved back to mid.
 
 **Ser No** : the output channel the servo is attached to
@@ -449,12 +418,27 @@ Do-Digicam-Control
 Trigger the :ref:`camera shutter <common-camera-shutter-with-servo>`
 once. This command takes no additional arguments.
 
+Do-Fence-Enable
+~~~~~~~~~~~~~~~~~~
+
+.. image:: ../../../images/MissionList_DoFenceEnable.png
+    :target: ../_images/MissionList_DoFenceEnable.png
+
+Enable(1) or Disable(0) the Copter :ref:`common-ac2_simple_geofence` and/or Copter :ref:`common-polygon_fence`. This command takes no additional arguments.
+
 Do-Mount-Control
 ~~~~~~~~~~~~~~~~
 
 .. image:: ../../../images/MissionList_DoMountControl.png
     :target: ../_images/MissionList_DoMountControl.png
 
-From AC3.3 This command allows you to specify a roll, pitch and yaw
-angle which will be sent to the :ref:`camera gimbal <common-cameras-and-gimbals>`. This can be used to point the
-camera in specific directions at various times in the mission.
+Controls the roll, pitch and yaw angle of the :ref:`camera gimbal <common-cameras-and-gimbals>`. This can be used to point the camera in specific directions at various times in the mission.
+
+Do-Gripper
+~~~~~~~~~~
+
+.. image:: ../../../images/MissionList_DoGripper.png
+    :target: ../_images/MissionList_DoGripper.png
+
+This command allows opening and closing a :ref:`servo gripper <common-gripper-servo>` or :ref:`EPM gripper <common-cameras-and-gimbals>`.
+Set the "drop/grab" column to 0 to close the gripper, 1 to open the gripper.  The first column, "Gripper No" is ignored because we currently only support a single gripper per vehicle.

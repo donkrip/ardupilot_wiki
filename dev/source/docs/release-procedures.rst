@@ -1,242 +1,111 @@
 .. _release-procedures:
 
-==================
-Release Procedures
-==================
+=========================
+Copter Release Procedures
+=========================
 
-This page outlines the steps that are normally followed for a Copter
-release. Listed mostly as a reference so that we don't forget the steps.
+ArduPilot is very reliable because bug fixes are prioritised over new features and releases are performed carefully and only after sufficient testing has been completed.
+
+This page outlines the steps that are normally followed for a Copter release.  Listed mostly as a reference so that we don't forget the steps.
 
 Alpha Testing
 =============
 
-The `AutoTester <http://autotest.ardupilot.org/>`__ that runs after each
-commit and highlights issues that it's been setup to test.
+The `AutoTester <https://autotest.ardupilot.org/>`__ runs after each
+commit and highlights issues that it has been setup to test.
 
 Developers and some Alpha testers perform intermittent tests of master
 especially after new features have been added.
 
-Beta Testing Release Candidates
-===============================
+Releasing Beta Versions / Release Candidates
+============================================
 
-Release candidates are made available to beta testers through the
-mission planner's Beta Firmware's link.  The Mission Planner Beta
-Firmware link pulls the version from the `Copter/beta directory of firmware.ardupilot.org. <http://firmware.ardupilot.org/Copter/beta/>`__
-
-Someone with ardupilot GitHub commit access (normally Randy) makes the
-new firmware available through the following steps:
-
-**For Pixhawk/PX4:**
-
-Open a Git Bash terminal in the ardupilot repository:
-
-a) ``git checkout master`` (or the ArduCopter-3.1.2 branch if this is a
-release candidate for a patch release)
-
-b) update ArduCopter.pde's firmware version and ReleaseNotes.txt
-
-in ardupilot, PX4Firmware and PX4NuttX directories:
-
-c) ``git show ArduCopter-beta`` and record the old git tags in case a
-backout is required
-
-d) ``git tag -d ArduCopter-beta``
-
-e) ``git push origin :refs/tags/ArduCopter-beta``
-
-f) ``git tag ArduCopter-beta HEAD``
-
-g) ``git push origin ArduCopter-beta``
-
-**For APM1/APM2:**
-
-Open a Git Bash terminal in the ardupilot repository:
-
-a) ``git checkout master`` (or the ArduCopter-3.1 branch if this is a
-release candidate for a patch release)
-
-b) update ArduCopter.pde's firmware version and ReleaseNotes.txt (if not
-already done above for Pixhawk)
-
-in the ardupilot directory:
-
-c) ``git show ArduCopter-beta-apm1`` and record the old git tags in case
-a backout is required
-
-d) ``git show ArduCopter-beta-apm2``
-
-e) ``git tag -d ArduCopter-beta-apm1``
-
-f) ``git tag -d ArduCopter-beta-apm2``
-
-g) ``git push origin :refs/tags/ArduCopter-beta-apm1``
-
-h) ``git push origin :refs/tags/ArduCopter-beta-apm2``
-
-i) ``git tag ArduCopter-beta-apm1 HEAD``
-
-j) ``git tag ArduCopter-beta-apm2 HEAD``
-
-k) ``git push origin ArduCopter-beta-apm1``
-
-l) ``git push origin ArduCopter-beta-apm2`` Commit a small change (`like this one <https://github.com/ArduPilot/ardupilot/commit/a38e00c048d705085782912442a9a019db4304d0>`__)
-to the ardupilot directory which will cause the firmware to be rebuilt.
-
-**Check the versions are available**
-
-Open the Mission Planner's Initial Setup > Install Firmware page and
-click the "Beta firmwares" link and ensure that the version displayed
-below each multicopter icon has updated.
+Beta Testing / Release candidates are made available to beta testers through the
+mission planner's "Beta firmwares" link.  The Mission Planner "Beta
+firmware" link pulls the firmware from the `Copter/beta directory of firmware.ardupilot.org. <https://firmware.ardupilot.org/Copter/beta/>`__
 
 .. image:: ../images/ReleaseProcedures_MPBetaFirmwares.jpg
     :target: ../_images/ReleaseProcedures_MPBetaFirmwares.jpg
 
-**Communicating the new release candidate**
+Someone with ardupilot GitHub commit access (normally Randy) makes the new firmware available through the following steps:
 
-Let Beta testers know the new version is available by emailing the
-drones-discuss@googlegroups.com and arducoptertesters@googlegroups.com.
-Include the contents of the ReleaseNotes.txt so people know what has
-changed.
+Create a new release branch or switch to an existing release branch
+-------------------------------------------------------------------
 
-Post a note into the latest "Copter Released!" thread (`like this one for AC3.1 <http://diydrones.com/forum/topics/arducopter-3-1-released>`__)
-and if this is the first release candidate for a new version create a
-new discussion on DIYDrones (`like this one for AC3.2 <http://diydrones.com/forum/topics/arducopter-3-2-beta-testing>`__)
-to concentrate the discussion.
+Open a Git Bash terminal in the ardupilot repository.
 
-**Issue Tracking**
+If this release involves a major or minor version increase (i.e. 3.5 to 3.6) create a new branch in your local ardupilot repository:
 
-Issues reported by Beta Testers via the DIYDrones discussion or the
-arducoptertesters email list are tracked by the lead Tester (Marco) and
-developer (Randy) perhaps using a google spreadsheet (`like this one <https://docs.google.com/spreadsheets/d/1yrYKJ-Txf5DBbEI7x4sk1p0Gts-5gjXCoiIdAyfnL7M/edit#gid=0>`__).
-They are then investigated by one of the developers (usually Randy,
-Leonard, Jonathan or Rob) and if it's determined to be an issue it's
-added to the regular `Issues List <https://github.com/ArduPilot/ardupilot/issues?labels=ArduCopter&state=open>`__.
-Sometimes beta testers directly log an issue into the issues list and
-this is ok but it risks the issues list becoming a support forum so it's
-better that it is investigated before being added to the issues list. 
-Someone with edit access on the issues list (usually Randy) should set
-the "Milestone" on the issue to the current release if we plan to
-resolve the issue before the official release.
+- ``git checkout -b Copter-3.6`` ("Copter-3.6" should be replaced with the corrrect major and minor version numbers)
+- ``git push`` to create the new directory in the shared repo
+- click the `"New Project" button <https://github.com/ArduPilot/ardupilot/projects>`__ on the GitHub projects page to create the corresponding "Copter 3.x Backports" project.  This is used to track features to be included in future releases
 
-Final Release
-=============
+Alternatively if this release is built on an earlier release branch checkout the branch:
 
-**Branching and tagging before the release**
+- ``git checkout Copter-3.6`` to switch to the existing release branch ("Copter-3.6" should be replaced with the corrrect major and minor version numbers)
 
-Approximately 2 to 3 weeks before the final release a new branch is
-created in the ardupilot repository. This protects the final release
-from changes that could invalidate the testing and also avoids
-disrupting development for future releases.
+Pull in changes from master
+---------------------------
 
-In a Git Bash terminal in the ardupilot repository:
+Check the `ArduPilot Github Projects <https://github.com/ArduPilot/ardupilot/projects>`__ to determine which PRs and commits should be included in this release.
+For example the `Copter 3.5 Backports project <https://github.com/ArduPilot/ardupilot/projects/4>`__ holds the list of PRs and commits that should be included in the next Copter-3.5 release.
 
-``git checkout -b ArduCopter-3.2`` (replace "ArduCopter-3.2" with the
-new release name)
+- ``git reset --hard origin/master``, ``git submodule update --recursive`` can be used to reset the release branch to master if all of master should be included (this is normal for at least the first few beta releases)
 
-``git push``
+OR
 
-Tags are added to the PX4Firmware and PX4NuttX repositories so that we
-can be sure which commits were included in the release:
+- use ``gitk master`` to cherry-pick in just some changes from master
 
-``git tag ArduCopter-3.2`` (replace "ArduCopter-3.2" with the new
-release name)
+Update version, release notes and tags
+--------------------------------------
 
-``git push origin ArduCopter-3.2``
+1. update the THISFIRMWARE and FIRMWARE_VERSION definitions in `version.h <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/version.h>`__
+2. update `ReleaseNotes.txt <https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/ReleaseNotes.txt>`__
+3. ``git show ArduCopter-beta`` and record the old git tag in case a backout is required
+4. ``git tag -d ArduCopter-beta`` to delete the beta tag from the local repo
+5. ``git push origin :refs/tags/ArduCopter-beta`` to delete the beta tag from the shared repo
+6. ``git tag ArduCopter-beta HEAD`` to create a new beta tag in the local repo
+7. ``git push origin ArduCopter-beta`` to push the new beta tag to the shared repo
+8. check the `ArduPilot GitHub release list <https://github.com/ArduPilot/ardupilot/releases>`__ to ensure all tags have been updated in the shared repo
 
-**Get a video ready**
+Steps 4 to 8 above should be repeated for the ``ArduCopter-beta-heli`` tag to release for Traditional Helicopters.
 
-Ask Marco or other members of the testing team to provide videos which
-will be included in the final release discussion.
+Check the versions are available in Mission Planner
+---------------------------------------------------
 
-**Deciding to release**
+Wait 4hrs to 8hrs for the binaries to be built (check the `autotest-output.txt <https://autotest.ardupilot.org/autotest-output.txt>`__ file for status) and then open the Mission Planner's Initial Setup > Install Firmware page and click the "Beta firmwares" link and ensure that the version displayed below each multicopter icon has updated.
 
-The "ok to release" decision is made by the lead developer (Randy) after
-a discussion on the weekly dev call, a review of the outstanding issues
-and after getting the "ok" from the lead tester (Marco).
+.. image:: ../images/ReleaseProcedures_MPBetaFirmwares.jpg
+    :target: ../_images/ReleaseProcedures_MPBetaFirmwares.jpg
 
-**Release Steps**
+Announce the release to the beta testers
+----------------------------------------
 
-Someone with commit access (usually Randy) does the following:
+Let Beta testers know the new version is available by creating a post in `Discourse's Copter category <https://discuss.ardupilot.org/c/arducopter>`__ (create a new category if required)
+and by posting on the `ArduPilot facebook group <https://www.facebook.com/groups/ArduPilot.org>`__.  Include the contents of the ReleaseNotes.txt so people know what has changed and a video if possible.
 
-**For Pixhawk/PX4:**
+Issue Tracking
+--------------
 
-Open a Git Bash terminal in the ardupilot repository:
+- beta testers should report issues in the appropriate `discourse Copter forum <https://discuss.ardupilot.org/c/arducopter>`__
+- the release manager (Randy) with help from other developers should investigate issues and respond with the cause of the problem
+- confirmed bugs should be added to the `ArduPilot Issues List <https://github.com/ArduPilot/ardupilot/issues>`__.  The issue's label should be set to "Copter" and Projects and Milestone set to the upcoming release if it should be addressed before release.
 
-a) ``git checkout ArduCopter-3.2`` ("ArduCopter-3.2" should be replaced
-with the branch name for the release)
+Releasing Stable Versions
+=========================
 
-b) update ArduCopter.pde's firmware version and ReleaseNotes.txt
+Stable releases are done after weeks or months of beta testing and normally only after two weeks have passed with no unexplained crashes.
 
-in ardupilot, PX4Firmware and PX4NuttX directories:
+The go-no-go decision on a stable release is discussed on the preceding :ref:`weekly development call <ardupilot-mumble-server>`.  This discussion normally includes a review of the outstanding issues.
 
-c) ``git show ArduCopter-stable`` and record the old git tags in case a
-back-out is required
+Releasing a stable version is the same as a beta version except the ``ArduCopter-stable`` and ``ArduCopter-stable-heli`` tags are used.
 
-d) ``git tag -d ArduCopter-stable``
+An additional tag is created including the patch release number:
 
-e) ``git push origin :refs/tags/ArduCopter-stable``
+- ``git tag Copter-3.6.0``
+- ``git push origin Copter-3.6.0``
 
-f) ``git tag ArduCopter-stable HEAD``
-
-g) ``git push origin ArduCopter-stable``
-
-h) ``git tag ArduCopter-3.2-px4 HEAD`` (where "3.2" should be replaced
-with the release number)
-
-i) ``git push origin ArduCopter-3.2-px4``
-
-**For APM1/APM2:**
-
-Open a Git Bash terminal in the ardupilot repository:
-
-a) ``git checkout ArduCopter-3.2`` ("ArduCopter-3.2" should be replaced
-with the branch name for the release)
-
-b) ``git show ArduCopter-stable-apm1`` and record the old git tags in
-case a back-out is required
-
-c) ``git show ArduCopter-stable-apm2`` and record the old git tags in
-case a back-out is required
-
-d) ``git tag -d ArduCopter-stable-apm1``
-
-e) ``git tag -d ArduCopter-stable-apm2``
-
-f) ``git push origin :refs/tags/ArduCopter-stable-apm1``
-
-g) ``git push origin :refs/tags/ArduCopter-stable-apm2``
-
-h) ``git tag ArduCopter-stable-apm1 HEAD``
-
-i) ``git tag ArduCopter-stable-apm2 HEAD``
-
-j) ``git push origin ArduCopter-stable-apm1``
-
-k) ``git push origin ArduCopter-stable-apm1``
-
-l) ``git tag ArduCopter-3.2-apm HEAD`` (where "3.2" should be replaced
-with the release number)
-
-m) ``git push origin ArduCopter-3.2-apm``
-
-**Check the new versions are available**
-
-Open the Mission Planner's Initial Setup > Install Firmware page and
-ensure that the version displayed below each multicopter icon has
-updated.
-
-**Communicating the Release**
-
-Let testers and developers know the release has completed by emailing
-the drones-discuss@googlegroups.com and
-arducoptertesters@googlegroups.com. In general there should be no
-changes from the final release candidate.  Include the full list of
-changes since the last official release which can be taken from the
-ReleaseNotes.txt.
-
-Create a new "ArduCopter Released!" thread (`like this one for AC3.1 <http://diydrones.com/forum/topics/arducopter-3-1-released>`__)
-including videos from the beta testers and stand by for any support
-issues that may arise.
+Announcements are done in much the same way as beta releases, namely an announcement is made on ArduPilot's discuss forums and on ArduPilot's facebook page.  Mission Planner will also show a pop-up informing users that a new version is available.
 
 Didn't find what you are looking for?
 =====================================
@@ -244,5 +113,4 @@ Didn't find what you are looking for?
 If you think of something that should be added to this site, please
 `open an issue <https://github.com/ArduPilot/ardupilot/issues>`__ or
 post a comment on the
-`drones-discuss <https://groups.google.com/forum/#!forum/drones-discuss>`__
-mailing list.
+`ArduPilot Gitter General Chat <https://gitter.im/ArduPilot/GeneralChat>`__.

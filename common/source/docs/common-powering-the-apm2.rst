@@ -421,7 +421,7 @@ true in traditional helicopters where the collective servos can draw
 3-20 amps in short bursts. The power source must be able to accommodate
 this without voltage droop or voltage spikes. A quality switching type
 BEC (e.g one of
-`these <http://www.castlecreations.com/products/ccbec.html>`__ or one of
+`these <http://www.castlecreations.com/products-search?qs=bec>`__ or one of
 `these <http://www.western-robotics.com/WRL-HBECM2>`__) can be a
 solution depending on overall current requirements. Many of these type
 of regulators are programmable so remember to program them with in the
@@ -431,7 +431,7 @@ induced failures. APM2 should never be connected directly to a battery
 of any type.
 
 Power source problems are common and can be insidious and frustrating.
-Be meticulous. Any autopilot or flight controller is useless and
+Be meticulous. Any autopilot or autopilot is useless and
 potentially dangerous without good clean power source.
 
 The picture below is of APM 2; but the concept is applicable to APM

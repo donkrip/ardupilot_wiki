@@ -6,8 +6,7 @@ AntennaTracker Home
 
 .. tip::
 
-    The ArduPilot Developer Ecosystem is Evolving! 
-    `Find out more here … <http://diydrones.com/profiles/blogs/a-new-chapter-in-ardupilot-development>`_
+    Keep up with the latest ArduPilot related blogs on `ArduPilot.org! <https://ardupilot.org/>`__
 
 The *AntennaTracker* Project delivers firmware which allows you to use a
 supported flight controller board (Pixhawk, APM2, etc.) as the
@@ -21,6 +20,14 @@ the vehicle.
 Using a correctly aligned directional antenna *significantly improves* 
 the range over which signals can be both sent and received from
 a ground station.
+
+If your a developer wanting to work on AntennaTracker please join the
+ArduPilot gitter chat channel which can be found in the Community menu
+above.
+
+If your a user looking for support on the AntennaTracker please go to
+the support forums which can be found under the Community menu above.
+
 
 ..  youtube:: 8GCqYTDYZaM
     :width: 100%
@@ -41,6 +48,7 @@ This manual will guide you through setup and configuration process.
     Configuration <docs/configuration>
     docs/parameters
     Connecting with GCS <docs/connecting-with-gcs>
+    docs/common-logs
     How to Operate <docs/how-to-operate>
     docs/common-appendix
     docs/common-table-of-contents

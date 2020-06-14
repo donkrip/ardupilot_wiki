@@ -1,7 +1,7 @@
 .. _making-a-mavlink-wifi-bridge-using-the-raspberry-pi:
 
 ===================================================
-Making a Mavlink WiFi bridge using the Raspberry Pi
+Making a MAVLink WiFi bridge using the Raspberry Pi
 ===================================================
 
 .. note::
@@ -188,13 +188,13 @@ Find the line that says
 
 ::
 
-    interfaces=""
+    INTERFACESv4=""
 
 and change it to:
 
 ::
 
-    interfaces="wlan0"
+    INTERFACESv4="wlan0"
 
 Save the file by typing in **Control-X** then **Y** then **return**
 
@@ -295,7 +295,13 @@ may want to try:
 ::
 
     driver=nl80211
-
+    
+If you are using the built in WiFi on a Raspberry Pi 3 as wlan0, comment out the driver line:
+    
+::
+    
+    #driver=rt1871xdrv
+ 
 Make sure the file has no extra spaces or tabs at the beginning and ends
 of the lines, this file is very sensitive to this.
 
@@ -415,9 +421,10 @@ adapter.
 Update hostapd
 --------------
 
-The hostapd version installed by apt-get does not fully support the WiFi
-dongle we are using so we need to update it to a later version. Lets get
-the new version of hostapd by typing the follwing command:
+If you are not using the built in WiFi on a Raspberry Pi 3 then the hostapd
+version installed by apt-get does not fully support the WiFi dongle we are using
+so we need to update it to a later version. Lets get the new version of hostapd 
+by typing the follwing command: (only if NOT using the built in Wifi)
 
 ::
 
@@ -514,12 +521,12 @@ Installing and configuring MavProxy
 
 With the RPi now working as an access point, we now need to configure it
 to connect to a drone. To accomplish this we will install
-`MavProxy <http://ardupilot.github.io/MAVProxy/html/index.html>`__, a
+:ref:`MAVProxy <mavproxy:home>`, a
 minimalist but full featured ground control station.
 
 .. tip::
 
-   The official instructions to `install MAVProxy on Linux are here <http://ardupilot.github.io/MAVProxy/html/getting_started/download_and_installation.html#linux>`__.
+   The official instructions to install MAVProxy on Linux are :ref:`here <mavproxy:mavproxy-downloadinstalllinux>`.
 
 First install some other modules that are needed. Type the following
 commands:
@@ -596,7 +603,7 @@ Testing the MavProxy Connection
 Now we are ready to test the communication. To do this follow the
 instructions on the section `"Testing the
 Connection" <raspberry-pi-via-mavlink/#Testing_the_connection>`__ in the
-Raspberry Pi via Mavlink page.
+Raspberry Pi via MAVLink page.
 
 
 .. _making-a-mavlink-wifi-bridge-using-the-raspberry-pi_configuring_mavproxy_to_always_run_and_listen_to_incoming_connections:
@@ -658,6 +665,7 @@ with the RPi.
    ::
 
        sudo mv mavgateway /etc/init.d/mavgateway
+       cd /etc/init.d/
        sudo chown root:root mavgateway
        sudo chmod 755 mavgateway
 
@@ -666,7 +674,7 @@ with the RPi.
 
    ::
 
-       update-rc.d mavgateway defaults
+       sudo update-rc.d mavgateway defaults
 
 #. Reboot the RPi:
 
@@ -719,7 +727,7 @@ SD Card Image file
 
 If you don't want to configure your own RPi, you can download this image
 file and restore it to an SD Card to use it on your own RPi from this
-`link <http://firmware.ardupilot.org/Tools/MavStation/>`__.
+`link <https://firmware.ardupilot.org/Tools/MavStation/>`__.
 
 To restore **this image** to an SD Card you will need an SD Card with at
 least 16GB of space, just follow the same steps described in the section

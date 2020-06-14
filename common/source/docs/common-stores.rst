@@ -4,22 +4,40 @@
 Stores
 ======
 
-The following stores are known to stock quality versions of the controllers, telemetry radios, cables etc. 
-recommended for use with ArduPilot (in alphabetical order).
+The following stores are known to stock quality versions of the controllers, telemetry radios, cables etc.
+recommended for use with ArduPilot (in alphabetical order).  You may also want to check the list of :ref:`Ready-to-Use vehicles <common-rtf>`.
 
-* `AUAV <http://www.auav.co/>`__
-* `Craft & Theory <http://www.craftandtheoryllc.com/store/>`__
-* `CUAV <http://www.cuav.net>`__
-* `Emlid <https://emlid.com/shop/>`__
-* `EnRoute <http://www.enroute.co.jp/>`__
-* `Erle Robotics <https://erlerobotics.com/>`__ 
+`ArduPilot SWAG <https://shop.ardupilot.org/>`__ ArduPilot SWAG, Support and fun merchandise
+
+* `AION ROBOTICS <https://www.aionrobotics.com>`__
+* `Air-Supply Aerial <https://www.airsupply.com>`__
+* `AltiGator <http://www.altigator.com/>`__
+* `Bask Aerospace <https://baskaerospace.com.au/>`__
+* `Benewake <https://benewake.en.alibaba.com/?spm=a2700.icbuShop.88.19.66976e38pCbzVV>`__
+* `BlueRobotics <https://www.bluerobotics.com/store/>`__
+* `Craft & Theory <http://www.craftandtheoryllc.com/store/>`__ (FrSky telemetry, MAUCH power modules)
+* `CUAV <https://store.cuav.net/>`__
+* `Drotek <https://drotek.com/>`__
+* `Emlid <https://store.emlid.com/>`__
+* `EnRoute LAB <https://store.shopping.yahoo.co.jp/elab-store/>`__
+* `Event38 <https://event38.com/shop/>`__
+* `Foxtech <https://www.foxtechfpv.com>`__
+* `Harris Aerial <https://www.harrisaerial.com/shop/>`__
+* `Hex <http://www.hex.aero/shop/>`__
+* `Holybro <https://shop.holybro.com/>`__
 * `JapanDrones <http://japandrones.com/>`__
 * `jDrones <http://store.jdrones.com/>`__
-* `Northox <https://northox.myshopify.com/>`__
+* `Jester's Drones <http://www.jestersdrones.org/store/>`__ (Solo addons, MAUCH power modules)
+* `Lightware <https://lightware.co.za/>`__
+* `mRobotics <http://mrobotics.io/>`__
+* `PDRL AeroFC <https://pdrl.in/aerofc-autopilot/>`__
 * `ProfiCNC <http://www.proficnc.com/stores>`__
 * `RF Design <http://store.rfdesign.com.au/>`__
+* `UnmannedTech UK <https://www.unmannedtechshop.co.uk/>`__
+* `uAvionix <https://uavionix.com/>`__
+* `UAV Systems International <https://uavsystemsinternational.com/collections/all>`__
 * `VirtualRobotix <http://www.virtualrobotix.it/index.php/en/shop>`__
-* `3DR <https://store.3dr.com/>`__ (Solo parts and accessories)
+* `3DXR <https://www.3dxr.co.uk/>`__
 
 
-[copywiki destination="copter,plane,rover,planner,planner2,antennatracker,dev,ardupilot"]
+[copywiki destination="copter,plane,rover,planner,planner2,antennatracker,dev,ardupilot,mavproxy"]

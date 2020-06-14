@@ -6,7 +6,7 @@ Plane SITL/MAVProxy Tutorial
 
 This tutorial provides a basic walk-through of how to use
 :ref:`SITL <sitl-simulator-software-in-the-loop>` and
-`MAVProxy <http://ardupilot.github.io/MAVProxy/>`__ for *Plane* testing.
+:ref:`MAVProxy<mavproxy:home>` for *Plane* testing.
 
 Overview
 ========
@@ -23,7 +23,7 @@ The tutorial is complementary to the topic :ref:`Using SITL for ArduPilot Testin
    -  We use *MAVProxy* here, but you can :ref:`attach another ground station to SITL <using-sitl-for-ardupilot-testing_connecting_otheradditional_ground_stations>`
       if you prefer (similar instructions can be used in any GCS).
    -  This tutorial is for Plane - see
-      :ref:`Copter <copter-sitl-mavproxy-tutorial>` and Rover for similar
+      :ref:`Copter <copter-sitl-mavproxy-tutorial>` and :ref:`Rover <rover-sitlmavproxy-tutorial>` for similar
       tutorials on the other vehicles.
 
 Preconditions
@@ -36,14 +36,19 @@ using the ``--map`` and ``--console`` options:
 ::
 
     cd ~/ardupilot/ArduPlane
-    sim_vehicle.py -j4 --map --console
+    sim_vehicle.py --map --console
 
-As part of the setup you should have loaded some standard/test
-parameters into the *MAVProxy Command Prompt*:
+.. note::
+
+   If you wish to start the simulation at a different map location or use a different frame type
+   (-f option for quadplane,firefly,etc.) than a standard aileron/elevator/rudder/throttle plane, see
+   :ref:`SITL Advance Testing <using-sitl-for-ardupilot-testing>`. A complete list of startup
+   options for the simulator can be found using the --help option:
 
 ::
 
-    param load ..\Tools\autotest\ArduPlane.parm
+    sim_vehicle.py --help
+
 
 The *MAVProxy Command Prompt*, *Console* and *Map* should be arranged
 conveniently so you can observe the status and send commands at the same
@@ -55,17 +60,11 @@ time.
 Taking off
 ==========
 
-To take off with Plane you should use a mission (AUTO mode) that
+To take off with Plane you can use a mission (AUTO mode) that
 contains the
 :ref:`MAV_CMD_NAV_TAKEOFF <plane:mav_cmd_nav_takeoff>`
-command. Once you are airborne you can switch to other other :ref:`flight modes <plane:flight-modes>`.
+command, or use the TAKEOFF mode. If it's a quadplane, you can also takeoff in a VTOL mode such as QLOITER, QHOVER, or QSTABILIZE, by raising the throttle above mid-stick (using normal defaults, RC 3 1600 command for example). Once you are airborne you can switch to other :ref:`flight modes <plane:flight-modes>` (be sure your throttle is set at an appropriate value for that mode).
 
-.. note::
-
-   At time of writing, Plane only supports automated takeoff in
-   ``AUTO`` mode as part of a mission. If you want to change to ``GUIDED``
-   mode (or any other mode) then you first have to take off using a
-   mission.
 
 First load the **CMAC-circuit.txt** test mission using the ``wp load``
 command as shown below (this mission contains the takeoff command):
@@ -147,7 +146,7 @@ skip to the second waypoint using ``wp set n``, and *loop* the mission:
     wp set 2
     wp loop
 
-The `MAVProxy Waypoints documentation <http://ardupilot.github.io/MAVProxy/html/uav_configuration/waypoints.html>`__
+The :ref:`MAVProxy Waypoints documentation <mavproxy:mavproxy-waypoints>`
 lists the full set of available commands (or you can get them using
 auto-completion by typing "wp" on the command line).
 
@@ -322,5 +321,6 @@ and simulation using ``param show *``, and to set any parameter using:
 ``param set PARAM_NAME VALUE``. In addition to affecting the vehicle
 itself some parameters simulate the performance/failure of specific
 hardware components and the environment (for example, the wind). These
-can be listed using: `:ref:`param show sim*``. The topic `Using SITL for ArduPilot Testing <using-sitl-for-ardupilot-testing>` explains more about how
-you can test using SITL.
+can be listed using: ``param show sim*``. The topic :ref:`Using SITL
+for ArduPilot Testing <using-sitl-for-ardupilot-testing>` explains
+more about how you can test using SITL.

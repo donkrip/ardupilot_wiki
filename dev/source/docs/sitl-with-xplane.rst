@@ -1,4 +1,4 @@
-.. _sitl_with_xplane:
+.. _sitl-with-xplane:
 
 ==========================
 Using SITL with X-Plane 10
@@ -39,7 +39,9 @@ is running X-Plane (in which case you should use an IP address of
 Go to the Settings -> Net Connections menu in X-Plane and then to the
 Data tab. Set the right IP address, and set the destination port
 number as 49001. Make sure that the receive port is 49000 (the
-default).
+default). If using loopback (ie. 127.0.0.1) then you also need to make
+sure the "port that we send from" is not 49001. In the example below
+49002 is used.
 
 .. figure:: ../images/xplane-network-data.jpg
    :target: ../_images/xplane-network-data.jpg
@@ -161,7 +163,7 @@ Linux then make sure pip is installed and run::
   $ pip install --upgrade pymavlink mavproxy
   
 If you are on Windows then download and install MAVProxy from
-http://firmware.ardupilot.org/Tools/MAVProxy/
+https://firmware.ardupilot.org/Tools/MAVProxy/
 
 Then do a git checkout of ArduPilot master and change directory to the
 ArduPlane directory. I like to create a sub-directory for each
@@ -174,7 +176,7 @@ create a PT60 directory::
  $ cd ArduPlane
  $ mkdir PT60
  $ cd PT60
- $ sim_vehicle.py -j4 -D -f xplane --console --map
+ $ sim_vehicle.py -D -f xplane --console --map
 
 
 Flying a Helicopter

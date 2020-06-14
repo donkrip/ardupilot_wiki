@@ -30,8 +30,6 @@ found
     That said, it is almost always possible to recover a drone and members
     of the ardupilot dev team can likely help people hacking or recovering
     their Bebop on `this google group <https://groups.google.com/forum/#!forum/bebop-ardupilot>`__.
-    Prepare to spend some time, patience and develop some hardware/software
-    skills.
 
 
 Upgrading the firmware
@@ -108,51 +106,39 @@ software for Bebop:
 Install armhf toolchain
 -----------------------
 
-On Ubuntu from 12.04
-~~~~~~~~~~~~~~~~~~~~
+#. Install Parrot's version of linaro *arm-linux-gnueabihf* toolchain that can be downloaded from
+   `here <https://github.com/Parrot-Developers/toolchains/blob/master/parrot-tools-linuxgnutools-2016.02-linaro_1.0.0-2_amd64.deb>`__
 
-#. Install the official arm-linux-gnueabihf toolchain
-#. ::
-
-       sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
-
-On other Linux distributions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#. Install the *arm-gnueabihf* tool chain that can be downloaded from
-   `here <https://releases.linaro.org/14.07/components/toolchain/binaries/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux.tar.bz2>`__
-#. Extract the tar archive (for instance in /opt)
+#. Install it (the toolchain will be extracted in /opt)
 
    ::
 
-       sudo tar -xjvf gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux.tar.bz2 -C /opt/
+       sudo dpkg -i parrot-tools-linuxgnutools-2016.02-linaro_1.0.0-2_amd64.deb
 
 #. Add the path to the toolchain to the PATH variable
 
    ::
 
-       export PATH=/opt/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin:$PATH
+       export PATH=/opt/arm-2016.02-linaro/bin:$PATH
 
 Download and compile ArduCopter
 -------------------------------
 
-#. You need to install git first (see `instructions here <https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git>`__)
 #. Clone ardupilot repository
 
    ::
 
        git clone https://github.com/ArduPilot/ardupilot.git
        cd ardupilot
-       git submodule init
-       git submodule update
+       git submodule update --init --recursive
 
 #. Building the flight control firmware is nearly identical for
-   :ref:`building for the Pixhawk <building-px4-for-linux-with-make>`
-   except the ``make`` command is:
+   :ref:`building for the Pixhawk <building-px4-with-make>`
+   except the build command is:
 #. ::
 
-       cd ArduCopter
-       make bebop
+       ./waf configure --board=bebop --static
+       ./waf build
 
 #. Strip the binary to reduce the memory footprint:
 
@@ -377,7 +363,7 @@ flash an alternative version in order to be able to control your Bebop
 with it (information about that is coming soon...).
 
 In order to pilot the Bebop manually, Mission Planner GCS users can use
-a :ref:`gamepad as described here <copter:flying-with-a-joystickgamepad-instead-of-rc-controller>`. 
+a :ref:`gamepad as described here <copter:common-joystick>`. 
 Alternatively use the RCOutput UDP interface on port 777 on the Bebop,
 with a Linux PC (or board type Raspberry Pi) and a USB gamepad.
 

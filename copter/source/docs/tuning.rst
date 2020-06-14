@@ -4,15 +4,13 @@
 Advanced Tuning
 ===============
 
-This article provides an overview of how to tune various Copter
-parameters.
+This article provides an overview of how to tune various Copter parameters.
 
 Overview
 ========
 
 The default `PID gains <https://en.wikipedia.org/wiki/PID_controller>`__ are meant for
-the `3DR quad copter <https://store.3dr.com/products/IRIS>`__
-although they work on a wide variety of frames.  Still to get optimal
+the 3DR IRIS although they work on a wide variety of frames.  Still, to get optimal
 performance you may need to adjust them which can be done through the
 *Mission Planner*'s **Config/Tuning \| Copter Pids** screen.  The screen
 shot below shows the most important parameters for Roll/Pitch (yellow),
@@ -35,7 +33,7 @@ performance in Auto mode.
 
 .. note::
 
-   `Dave C's AC2.8.1 tuning guide <http://diydrones.com/forum/topics/arducopter-tuning-guide>`__ 
+   `Dave C's AC2.8.1 tuning guide <https://diydrones.com/forum/topics/arducopter-tuning-guide>`__
    has good information for tuning for rate roll and pitch but altitude hold,
    Loiter and navigation has changed dramatically since AC2.8.1 so those
    sections are no longer valid.
@@ -110,8 +108,7 @@ of P) should be maintained if you modify these parameters.  These values
 should never be increased but for very powerful copters you may get
 better response by reducing both by 50% (i.e P to 0.5, I to 1.0).
 
-See the :ref:`Altitude Hold flight mode page <altholdmode>` for more
-information.
+See the :ref:`Altitude Hold flight mode page <altholdmode>` for more information.
 
 Loiter Tuning
 =============
@@ -121,23 +118,19 @@ Generally if Roll and Pitch are tuned correctly,  the
 and :ref:`compass <common-diagnosing-problems-using-logs_compass_interference>`
 are set-up and performing well and :ref:`vibration levels <common-diagnosing-problems-using-logs_vibrations>`
 are acceptable, Loiter does not require much tuning but please see the
-:ref:`Loiter Mode <loiter-mode_tuning>` page for more details on tunable 
+:ref:`Loiter Mode <loiter-mode_tuning>` page for more details on tunable
 parameters including the horizontal speed.
 
 In-flight tuning
 ================
 
-A single parameter's value can be tuned in flight using the
-transmitter's Ch6 tuning knob.  A specific example for tuning the Rate
-Roll/Pitch P values can be found on the :ref:`Rate Roll and Pitch P tuning wiki page <ac_rollpitchtuning_in-flight_tuning>`. 
-Please see the Ch6 Opt drop-down on the Mission Planner's
-**Config/Tuning \| Copter Pids**'s screen for a full list of parameters
-that can be tuned.
+See the :ref:`Transmitter based tuning<common-transmitter-tuning>` page for details.
 
-After setting the Ch6 Opt value, the Min and Max should also be set to
-reasonable values (i.e. non-zero and also not unreasonably high) and
-then the "Refresh screen" button should be pushed by tuning the Ch6 knob
-to ensure that the parameter is updating correctly.
+Filter tuning
+=============
+
+Copters are often affected by vibration and tuning the various software filters available is critical to achieving an overall tune.
+A guide on tuning the various notch filters available can be found on the :ref:`Notch Filtering wiki page <common-imu-notch-filtering>`.
 
 Video introduction to PIDs
 ==========================
@@ -157,3 +150,8 @@ firmware to continuously stabilize the vehicle
 
 ..  youtube:: sDd4VOpOnnA
     :width: 100%
+
+-----
+
+.. image:: ../../../images/banner-freespace.png
+   :target: https://freespace.solutions/

@@ -30,8 +30,12 @@ including returning an HDOP of under 2.0.
 Controls
 ========
 
-AUTO should be set-up as one of the :ref:`Flight Modes <flight-modes>` on the flight
-mode switch.
+AUTO should be set-up as one of the :ref:`Flight Modes <flight-modes>`
+on the flight mode switch.
+
+You must arm your copter before you can engage AUTO mode. See
+:ref:`Arming the motors <arming_the_motors>` for details on how to arm
+your copter.
 
 If starting the mission while the copter is on the ground the pilot
 should ensure the throttle is down, then switch to the Auto flight mode,
@@ -39,7 +43,7 @@ then raise the throttle.  The moment that the throttle is raised above
 zero, the copter will begin the mission.
 
 If starting the mission from the air the mission will begin from the
-first command the moment that the flight mode switch is moved to Auto. 
+first command the moment that the flight mode switch is moved to Auto.
 If the first command in the mission is a take-off command but the
 vehicle is already above the take-off command's altitude the take-off
 command will be considered completed and the vehicle will move onto the
@@ -48,7 +52,7 @@ next waypoint.
 At any time the pilot can retake control from the autopilot by returning
 the flight mode switch to another flight mode such as Stabilize or
 Loiter.  If the pilot then switches to AUTO again, the mission will
-restart from the first command.
+resume from the last command.
 
 During the mission the pilot's roll, pitch and throttle inputs are
 ignored but the yaw can be overridden with the yaw stick.  This allows
@@ -73,9 +77,7 @@ waypoint and the pilot will need to retake control with the transmitter.
 Remember that when using RTL, the copter will return to the "home"
 position which is the location where the copter was armed.
 
-As the copter touches down at the end of the mission the pilot should
-move the throttle to zero at which point the autopilot will disarm the
-motors if it also believes that it has landed.
+As the copter touches down at the end of the mission the vehicle should automatically disarm but occasionally the vehicle may not sense the landing and the pilot may need to hold the throttle down and takeoff in another mode like Stabilize or Loiter and then manually disarm the vehicle.
 
 Tuning
 ======

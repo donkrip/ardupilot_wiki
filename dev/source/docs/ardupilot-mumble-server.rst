@@ -4,7 +4,7 @@
 ArduPilot Mumble Server
 =======================
 
-The ArduPilot dev team uses a `mumble server <http://wiki.mumble.info/wiki/Main_Page>`__ for real-time voice chat.  We have a "General Discussion" channel for chatting about ArduPilot development at any time. How many developers are connected depends a lot on timezones.  Don't be shy about your English language ability, we have developers from all over the world.
+The ArduPilot dev team uses a `mumble server <https://wiki.mumble.info/wiki/Main_Page>`__ for real-time voice chat.  We have a "General Discussion" channel for chatting about ArduPilot development at any time. How many developers are connected depends a lot on timezones.  Don't be shy about your English language ability, we have developers from all over the world.
 
 .. note::
 
@@ -14,7 +14,7 @@ The ArduPilot dev team uses a `mumble server <http://wiki.mumble.info/wiki/Main_
 Installing and Connecting
 -------------------------
 
--  Download the software from http://mumble.sf.net (look for **Download Mumble** and pick the "Stable Release" for your operating system)
+-  Download the software from https://wiki.mumble.info/wiki/Main_Page (look for **Download Mumble** and pick the "Stable Release" for your operating system)
 -  Install and open mumble
 -  from the Server menu select Connect
 -  server address: mumble.ardupilot.org
@@ -22,7 +22,7 @@ Installing and Connecting
 
 .. note::
 
-The port number is NOT the default mumble port number. If you find an empty server then please check your port number.
+    The port number is NOT the default mumble port number. If you find an empty server then please check your port number.
 
 When you first join the server it will ask you to choose a username. Please choose something like *FirstnameLastname*. The user name must not have any spaces.
 
@@ -34,16 +34,11 @@ If it's your first time dialing into the call, on the mumble application's confi
 Weekly dev calls
 ----------------
 
-The weekly development call is held on the mumble server in the "Weekly Dev Call" channel.  Time of the meeting is:
+The weekly development call is held on the mumble server in the "Weekly Dev Call" channel.
+Time of the meeting is: 2300 UTC
+A calendar with the meeting can be found at https://calendar.google.com/calendar/embed?src=rgdbom27tb1vlo62kjjnmt8va4%40group.calendar.google.com which will show the correct time for you timezone.
 
-- San Fran: Mon 4pm PDT
-- New York: Mon 7pm EDT
-- Brazil: Mon 8pm, BRT
-- Italy: Tue 1am EST
-- Australia: Tue 9am AEST
-- Japan: Tue 8am JST
-
-The agenda and minutes are normally sent to drones-discuss@googlegroups.com.
+The agenda and minutes are normally sent to discuss.ardupilot.org.
 
 Prefer Typing?
 --------------

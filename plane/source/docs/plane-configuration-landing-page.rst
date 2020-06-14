@@ -17,12 +17,15 @@ components, including those required for the operation of the autopilot.
 .. toctree::
     :maxdepth: 1
 
-    Mandatory Hardware Configuration <first-time-apm-setup>
-    Configuration Values for Common Airframes <configuration-files-for-common-airframes>
-    Normal/Elevon/VTail Mode & Reversing Servos <reversing-servos-and-setting-normalelevon-mode>
-    Differential Spoilers <differential-spoilers>
-    Flaperons <flaperons-on-plane>
-    Automatic Flaps <automatic-flaps>
-    Throttle Arming in Plane <arming-throttle>
-    Advanced Failsafe Configuration <advanced-failsafe-configuration>
-    Sensor Testing <common-sensor-testing>
+    Basic System Overview <common-basic-operation>
+    Choosing Servo Output Functions <servo-functions>
+    RC Input Throw and Trim <rc-throw-trim>
+    Radio Control Calibration <common-radio-control-calibration>
+    Accelerometer Calibration <common-accelerometer-calibration>
+    Compass Calibration <common-compass-calibration-in-mission-planner>
+    RC Transmitter Mode Setup <common-rc-transmitter-flight-mode-configuration>
+    ESC Calibration <guide-esc-calibration>
+    Automatic Trim <auto-trim>
+    Failsafe Function <apms-failsafe-function>
+    Basic FPV Plane <fpv-plane>
+

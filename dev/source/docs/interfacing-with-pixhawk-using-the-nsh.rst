@@ -1,8 +1,8 @@
 .. _interfacing-with-pixhawk-using-the-nsh:
 
-======================================
-Interfacing with Pixhawk using the NSH
-======================================
+===============================================
+Archived:Interfacing with Pixhawk using the NSH
+===============================================
 
 This article explains how to communicate with a Pixhawk using the `NuttX Shell (NSH) <http://nuttx.org/Documentation/NuttShell.html>`__ using
 either a serial or remote connection.
@@ -22,9 +22,6 @@ you can do with it include:
 -  Diagnose microSD errors
 -  Diagnose sensor failures
 -  Assist in debugging new drivers
-
-This topic explains how to connect and send NSH commands from *MAVProxy*
-via remote and serial connections.
 
 Running NSH using Debug Cable and Serial5
 =========================================
@@ -87,7 +84,7 @@ Setup instructions to access using MAVProxy:
 
           sudo pip install mavproxy
 
-   -  If on Windows `grab it here <http://firmware.ardupilot.org/Tools/MAVProxy/>`__.
+   -  If on Windows `grab it here <https://firmware.ardupilot.org/Tools/MAVProxy/>`__.
 
       .. note::
 

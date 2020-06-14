@@ -19,7 +19,15 @@ Internet connection to use maps
 Download
 ========
 
-`Download AP2 for Windows <http://firmware.ardupilot.org/Tools/APMPlanner/latest/apm_planner2_win.exe>`__.
+Download the insatller (XXX_win.exe) file for your machine from
+
+`firmware.ardupilot.org/Tools/APMPlanner <https://firmware.ardupilot.org/Tools/APMPlanner/>`__
+
+And also check the discussion forum for lastest info
+
+`<https://discuss.ardupilot.org/c/ground-control-software/apm-planner-2-0>`__
+
+
 
 Run .exe file
 =============

@@ -1,13 +1,17 @@
 .. _common-reach-rtk-receiver:
 
-========================
-Emlid Reach RTK Receiver
-========================
+============================
+Emlid Reach RTK GPS Receiver
+============================
 
-This article provides a brief overview of Reach RTK receiver. 
+This article provides a brief overview of Reach RTK GPS receiver. 
 
 .. image:: ../../../images/Reach.jpg
 	:target: ../_images/Reach.jpg
+
+.. note::
+
+     Reach RTK GPS is supported in Copter-3.4 (and higher), Plane 3.7.0 (and higher) and Rover 3.0.1 (and higher)
 
 What is Reach and what is it for?
 =================================
@@ -18,7 +22,7 @@ RTK has historically been used primarily by surveyors and others who required ce
 
 Reach runs open-source RTK processing software called RTKLIB written by Tomoji Takasu. Previously a computer was required to run RTKLIB, but now all RTKLIB features are available directly on Reach.
 
-For further information see `Reach documentation <http://docs.emlid.com/reach/introduction/>`__.
+For further information see `Reach documentation <https://docs.emlid.com/reach/>`__.
 
 ArduPilot integration
 =====================
@@ -30,26 +34,19 @@ Here is a demo video of Pixhawk and Reach working together:
 ..  youtube:: oq9H19ikAdM
     :width: 100%
 
-
-**Pixhawk binaries**
-
-Although ERB support has already been added to ArduPilot master, there was no release yet to include it. You can get stable binaries with ERB support for all the ArduPilot supported vehicles.
-
-* `Pixhawk firmware compatible with ERB <http://files.emlid.com/apm/px4-reach.zip>`__
-
 Connecting Reach to Pixhawk
 ===========================
 
-A drone-mounted Reach unit can receive base corrections over telemetry radio, thus not requiring a separate correction link to the drone. Coordinate output is implemented via a serial port.
+A Reach unit mounted on the vehicle can receive base corrections over telemetry radio, thus not requiring a separate correction link to the drone. Coordinate output is implemented via a serial port.
 
 .. image:: ../../../images/Reach_pixhawk_radio.jpg
 	:target: ../_images/Reach_pixhawk_radio.jpg
 
-For more information on Reach and Pixhawk integration, visit `Reach Ardupilot integration docs <http://docs.emlid.com/reach/apm-integration/>`__.
+For more information on Reach and Pixhawk integration, visit `Reach ArduPilot integration docs <https://docs.emlid.com/reach/ardupilot-integration/>`__.
 
 Read about Reach and its other applications:
 
-- `Reach overview <http://www.emlid.com/reach/>`__  
-- `Introduction to using Reach <http://docs.emlid.com/reach/introduction/>`__
+- `Reach overview <https://emlid.com/reach/>`__  
+- `Introduction to using Reach <https://docs.emlid.com/reach/>`__
 
 

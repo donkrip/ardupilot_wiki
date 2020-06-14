@@ -4,6 +4,8 @@
 Sonar Sensors
 =============
 
+**ARCHIVED**
+
 Sonar sensors can provide obstacle avoidance functionality for Rover.
 This page provides instructions for installing, configuring, and testing
 single and double sonar setups.
@@ -12,7 +14,7 @@ single and double sonar setups.
 
    This article is out of date. Sonars are now more generically
    represented by "Rangefinders" - Rover can support 4. The relevant
-   parameters have morphed from "SONAR" to "RNGFND" and are :ref:`the RNGFND parameters here <RNGFND_TYPE>`.
+   parameters have morphed from "SONAR" to "RNGFND" . See the ``RNGFNDx_y`` parameters, such as :ref:`RNGFND1_TYPE<RNGFND1_TYPE>` .
 
 What you'll need
 ================
@@ -56,12 +58,12 @@ on the other side is an IR sensor, used to compare results.
 .. image:: ../images/rover_apm2.x_setup.jpg
     :target: ../_images/rover_apm2.x_setup.jpg
 
-**PX4 Sonar Pins:** Sonar is now supported for Rover on the PX4. You
+**PX4 Sonar Pins:** Sonar is now supported for Rover on PX4FMU/PX4IO. You
 will need to assign one or both possible Sonars to the appropriate
 "SONAR_PIN and SONAR2_PIN parameters in: Mission Planner -
 Configuration - Advanced Params - Adv Parameter List.
 
-The following PX4 "Pins" are available for Sonar use.
+The following PX4FMU/PX4IO "Pins" are available for Sonar use.
 
 -  PIN = 11 : The "airspeed" pin. Located on a 3 pin DF13 connector on
    the PX4IO board, but directly visible to the ADC on the PX4FMU. This

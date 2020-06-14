@@ -16,9 +16,12 @@ In addition to mandatory calibration, you may also choose to :ref:`Configure Opt
 .. toctree::
     :maxdepth: 1
 
+    Basic System Overview <common-basic-operation>
+    Boats <boat-configuration>
     Radio Control Calibration <common-radio-control-calibration>
     Accelerometer Calibration <common-accelerometer-calibration>
-    RC Transmitter Autopilot Mode Configuration <common-rc-transmitter-flight-mode-configuration>
     Compass Calibration <common-compass-calibration-in-mission-planner>
-    Arming in Rover <arming-throttle>
-    Example Configuration <example-configuration>
+    RC Transmitter Mode Setup <common-rc-transmitter-flight-mode-configuration>
+    Motor and Servo configuration <rover-motor-and-servo-configuration>
+    Failsafes <rover-failsafes>
+

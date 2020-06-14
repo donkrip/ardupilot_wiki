@@ -1,8 +1,8 @@
 .. _building-for-erle-brain-2:
 
-=========================
-Building for Erle-Brain 2
-=========================
+=========================================
+Archived Topic: Building for Erle-Brain 2
+=========================================
 
 These instructions explain how to build ArduPilot on board the
 Erle-Brain 2.
@@ -35,11 +35,10 @@ Clone the source:
 
     #Move to home
     cd ~/
-    #Clone the repository in home
-    git clone https://github.com/erlerobot/ardupilot.git
+    #Clone the ArduPilot repository in home
+    git clone https://github.com/ArduPilot/ardupilot.git
     cd ardupilot
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
 
 Build
 -----
@@ -61,7 +60,7 @@ file.
 .. note::
 
    If building for Plane, Rover or Antenna Tracker replace the above
-   "ArduCopter" with "ArduPlane", "APMrover2" or "AntennaTracker".
+   "ArduCopter" with "ArduPlane", "Rover" or "AntennaTracker".
 
 Move firmware to the executable directory
 -----------------------------------------
